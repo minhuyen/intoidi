@@ -15,9 +15,9 @@ setup(
         'django_compressor==1.3',
         'South==0.8.4',
         'django-tagging',
+        "debug_toolbar",
         'docutils',
         'reversion',
-        'debug_toolbar',
     ],
 )
 
