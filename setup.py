@@ -3,9 +3,9 @@
 from setuptools import setup
 
 setup(
-    name='roadmapsupdates',
-    version='mvp',
-    description='Nas mezzanine na django.',
+    name='Mezzanine on Openshift',
+    version='0.1',
+    description='Mezzanine on Openshift',
     author='',
     author_email='',
     url='',
