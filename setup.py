@@ -18,6 +18,7 @@ setup(
         'django-debug-toolbar',
         'docutils',
         'django-reversion',
+        'django-adminactions',
     ],
 )
 
