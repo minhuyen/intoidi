@@ -15,7 +15,7 @@ setup(
         'django_compressor==1.3',
         'South==0.8.4',
         'django-tagging',
-        'django-debug-toolbar',
+        # 'django-debug-toolbar',  - throughs url errors on Openshift!
         'docutils',
         'django-reversion',
         'django-adminactions',

@@ -5,8 +5,13 @@
 import os
 import sys
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'settings.production'
-sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'openshift'))
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# settings_module = "%s.settings" % PROJECT_ROOT.split(os.sep)[-1]
+settings_module = "wsgi.settings"
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", settings_module)
+sys.path.append(os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi'))
+sys.path.insert(0, os.environ['OPENSHIFT_REPO_DIR']) 
+
 virtenv = os.environ['APPDIR'] + '/virtenv/'
 os.environ['PYTHON_EGG_CACHE'] = os.path.join(virtenv, 'lib/python2.6/site-packages')
 virtualenv = os.path.join(virtenv, 'bin/activate_this.py')
