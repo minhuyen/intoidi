@@ -2,6 +2,8 @@
 
 The latest Mezzanine with Django configured to work on Redhat Openshift (http://openshift.redhat.com).
 
+Includes the convenient backup cron script for DB and media files.
+
 [![Requirements Status](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements.png?branch=master)](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements/?branch=master)
 
 ##Quick info##
@@ -32,11 +34,15 @@ Under wsgi subfolder you can safely replace all files except:
 
 Other files are just stock Mezzanine project files.
 
+Backup feature requires cron cartridge.
+
 __Advantages__
 
 No changes needed for the local development. Use your manage.py on development PC as adviced by Mezzanine project.
 
 No changes needed for the Openshift environment. local_settings.py are set in general to use the Openshift provided parameters.
+
+Backups daily with files retention. I.e. daily backups are stored 14 days, weekly 60 days, monthly 300 days. Other backups are deleted in order to preserve the storage.
 
 __Full instructions for setup__
 
@@ -48,7 +54,7 @@ On local PC CD into the directory where you want to work with your application
 
 Create application and cd into the created dir (replace mezzanine with the name of your app)
 
-    rhc app create mezzanine python-2.6 postgresql-9.2
+    rhc app create mezzanine python-2.6 postgresql-9.2 cron-1.4
     cd mezzanine
     
 Delete not needed or conflicting files
@@ -61,12 +67,13 @@ Pull the adjustements
     git pull -s recursive -X theirs mezzanineopenshift master
         
         
-If you are on Windows, assure that the Openshift deployment hooks are executable
+If you are on Windows, assure that the Openshift deployment hooks and backup scripts are executable
 
     git update-index --chmod=+x .openshift\action_hooks\build
     git update-index --chmod=+x .openshift\action_hooks\deploy
+    git update-index --chmod=+x .openshift\cron\daily\backup.sh
 
-Optionaly adjust you requirements in the setup.py (do not forget to commit).
+Optionaly adjust you dependencies in the setup.py.
 
 Commit changes
 
