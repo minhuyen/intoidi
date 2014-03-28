@@ -2,6 +2,8 @@
 
 The latest Mezzanine with Django configured to work on Redhat Openshift (http://openshift.redhat.com).
 
+[![Requirements Status](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements.png?branch=master)](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements/?branch=master)
+
 ##Quick info##
 
 The concept is to merge 3 sources together:
@@ -86,8 +88,6 @@ SSH login to openshift application (replace mezzanine with the name of your app)
 Check via browser your fresh Mezzanine installation :)
     
 __Other info__
-
-[![Requirements Status](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements.png?branch=master)](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements/?branch=master)
 
 The OpenShift `python` cartridge documentation can be found at:
 
