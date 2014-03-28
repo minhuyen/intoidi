@@ -16,9 +16,9 @@ source $OPENSHIFT_PYTHON_DIR/virtenv/bin/activate
 
 # Always collect static files, static dir is erased on push and we might have
 # something new.
-echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/manage.py collectstatic --noinput'"
-python "$OPENSHIFT_REPO_DIR"wsgi/manage.py collectstatic --noinput
+echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/rhcmanage.py collectstatic --noinput'"
+python "$OPENSHIFT_REPO_DIR"wsgi/rhcmanage.py collectstatic --noinput
 
-#python "$OPENSHIFT_REPO_DIR"wsgi/openshift/manage.py createdb --noinput --settings=settings.production
+#python "$OPENSHIFT_REPO_DIR"wsgi/rhcmanage.py createdb --noinput --settings=settings.production
 
-#python "$OPENSHIFT_REPO_DIR"wsgi/openshift/manage.py migrate --noinput --settings=settings.production
+#python "$OPENSHIFT_REPO_DIR"wsgi/rhcmanage.py migrate --noinput --settings=settings.production
