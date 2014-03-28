@@ -1,6 +1,25 @@
+#MezzanineOpenshift#
+
 The latest Mezzanine with Django configured to work on Redhat Openshift (http://openshift.redhat.com).
 
-Copy you mezzanine project files under wsgi directory.
+##Quick info##
+
+The concept is to merge 3 sources together:
+
+  1. openshift python application project files
+  2. adjustements from this repo (incl. Mezzanine template project files)
+  3. your creations within Mezzanine project
+
+The principles:
+
+ - minimum adjustements needed
+ - being able to run the application on local dev PC and life environment without file juggling
+  
+##Quick intro##
+  
+(full instructions bellow)
+  
+Copy you mezzanine project files under wsgi directory and git push or sftp your changes to Openshift.
 
 Under wsgi subfolder you can safely replace all files except:
 
@@ -10,15 +29,6 @@ Under wsgi subfolder you can safely replace all files except:
  - debug_settings.py (for the convenience debug on/off switch on particular environment)
 
 Other files are just stock Mezzanine project files.
-
-rhc push the files into Openshift application.
-
-ssh login to Openshift application and run:
-
-   cd app-root/repo/wsgi
-   python rhcmanage.py createdb (answer some questions provided)
-   
-See the result on your Openshift website.
 
 __Advantages__
 
@@ -37,11 +47,15 @@ On local PC CD into the directory where you want to work with your application
 Create application and cd into the created dir (replace mezzanine with the name of your app)
 
     rhc app create mezzanine python-2.6 postgresql-9.2
-
+    cd mezzanine
+    
+Delete not needed or conflicting files
+    
+    del * 
+    
 Pull the adjustements
 
-    cd mezzanine
-    git remote add mezzanineopenshift -m master ssh://git@bitbucket.org:radeksvarz/mezzanineopenshift.git
+    git remote add mezzanineopenshift -m master git@bitbucket.org:radeksvarz/mezzanineopenshift.git
     git pull -s recursive -X theirs mezzanineopenshift master
         
         
@@ -51,11 +65,17 @@ If you are on Windows, assure that the Openshift deployment hooks are executable
     git update-index --chmod=+x .openshift\action_hooks\deploy
 
 Optionaly adjust you requirements in the setup.py (do not forget to commit).
-        
+
+Commit changes
+
+    git add -A
+    git commit -m "initial mezzanine deploy"
+    
 Push to openshift 
 
-    git commit -m "initial mezzanine deploy"
     git push origin
+    
+Now you can wait for a while for all dependencies to be downloaded on Openshift app. It might through some warnings.
     
 SSH login to openshift application (replace mezzanine with the name of your app)
 
