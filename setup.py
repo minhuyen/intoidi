@@ -11,6 +11,7 @@ setup(
     url='',
     install_requires=[
         'Django==1.6.2',
+        'psycopg2==2.5.2',
         'mezzanine==3.0.9',
         'django_compressor==1.3',
         'South==0.8.4',

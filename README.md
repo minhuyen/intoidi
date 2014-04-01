@@ -17,8 +17,9 @@ The concept is to merge 3 sources together:
 The principles:
 
  - minimum adjustements needed
- - being able to run the application on local dev PC and life environment without file juggling
-  
+ - being able to run the application on local dev PC and server environment without file juggling
+ - change behaviour via environment variables (e.g. DEBUG)
+ 
 ##Quick intro##
   
 (full instructions bellow)
@@ -30,11 +31,18 @@ Under wsgi subfolder you can safely replace all files except:
  - application (runs the Mezzanine under the Apache web process)
  - rhcmanage.py (ala manage.py adjusted to fit the Openshift environment)
  - local_settings.py (adjusted to recognize local PC vs the Openshift environment and t)
- - debug_settings.py (for the convenience debug on/off switch on particular environment)
 
 Other files are just stock Mezzanine project files.
 
 Backup feature requires cron cartridge.
+
+##Debugging##
+
+DEBUG seetings are impplicitly False and are controlled by the environment variable DJANGO_DEBUG.
+
+set it via ssh@openshift:  export DJANGO_DEBUG=True
+
+or using rhc from local PC: rhc env-set DJANGO_DEBUG=True --app <appname>
 
 __Advantages__
 
@@ -99,3 +107,7 @@ __Other info__
 The OpenShift `python` cartridge documentation can be found at:
 
 https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-python/README.md 
+
+Cron cartridge documentation
+
+http://openshift.github.io/documentation/oo_cartridge_guide.html#cron
