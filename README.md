@@ -20,7 +20,7 @@ The principles:
  - being able to run the application on local dev PC and server environment without file juggling
  - change behaviour via environment variables (e.g. DEBUG)
  
-##Quick intro##
+##Quick intro for Openshift people##
   
 (full instructions bellow)
   
@@ -29,8 +29,8 @@ Copy you mezzanine project files under wsgi directory and git push or sftp your 
 Under wsgi subfolder you can safely replace all files except:
 
  - application (runs the Mezzanine under the Apache web process)
- - rhcmanage.py (ala manage.py adjusted to fit the Openshift environment)
- - local_settings.py (adjusted to recognize local PC vs the Openshift environment and t)
+ - local_settings.py (adjusted to recognize local PC vs the Openshift environment)
+ - project_override_settings.py (your own settings)
 
 Other files are just stock Mezzanine project files.
 
@@ -38,11 +38,14 @@ Backup feature requires cron cartridge.
 
 ##Debugging##
 
-DEBUG seetings are impplicitly False and are controlled by the environment variable DJANGO_DEBUG.
+DEBUG settings are impplicitly False when deployed on Openshift and True on local PC development (auto setup).
+Additionaly it is controlled by the environment variable DJANGO_DEBUG.
 
-set it via ssh@openshift:  export DJANGO_DEBUG=True
+Set it on Openshift:
 
-or using rhc from local PC: rhc env-set DJANGO_DEBUG=True --app <appname>
+ - via ssh@openshift:  export DJANGO_DEBUG=True
+
+ - or using rhc from local PC: rhc env-set DJANGO_DEBUG=True --app <appname>
 
 __Advantages__
 
@@ -54,7 +57,7 @@ Backups daily with files retention. I.e. daily backups are stored 14 days, weekl
 
 __Full instructions for setup__
 
-Create account on Redhat Openshift ( http://openshift.redhat.com ), install your rhc tools on local PC.
+Create new account on Redhat Openshift ( http://openshift.redhat.com ), install your rhc tools on local PC (follow the instructions on the Openshift website).
 
 On local PC CD into the directory where you want to work with your application
 
@@ -92,13 +95,14 @@ Push to openshift
 
     git push origin
     
-Now you can wait for a while for all dependencies to be downloaded on Openshift app. It might through some warnings.
+Now you can wait for a while for all dependencies to be downloaded on Openshift's server. It might report some warnings.
     
 SSH login to openshift application (replace mezzanine with the name of your app)
 
     rhc ssh mezzanine --ssh="c:\git\bin\ssh.exe" 
     cd app-root/repo/wsgi/
-    python rhcmanage.py createdb
+    python manage.py createdb
+    python manage.py migrate
     
 Check via browser your fresh Mezzanine installation :)
     
