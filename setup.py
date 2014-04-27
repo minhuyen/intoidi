@@ -12,7 +12,7 @@ setup(
     install_requires=[
         'Django==1.6.3',
         'psycopg2==2.5.2', # important as Openshift default is the older 2.0.4 version throwing errors
-        'mezzanine==3.1.1',
+        'mezzanine==3.1.3',
         'django_compressor==1.3',
         'South==0.8.4',
         # requirements bellow are optional
