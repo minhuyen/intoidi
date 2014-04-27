@@ -86,8 +86,12 @@ else:
 # Example: "/var/www/example.com/static/"
 # We want to collect static files to the persistent data dir, so it is not deleted during Openshift git push deployment
 # If using on local PC, the default project static dir is used
-if os.environ.has_key('OPENSHIFT_DATA_DIR'):
-    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'static') 
+#if os.environ.has_key('OPENSHIFT_DATA_DIR'):
+#    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'static') 
+
+# old Openshift compatibility (static files are deleted during git push)
+if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static') 
 
 # Media are stored in the persistent directory 
 # If using on local PC, the default project static/media dir is used

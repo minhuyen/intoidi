@@ -13,7 +13,6 @@ source $OPENSHIFT_PYTHON_DIR/virtenv/bin/activate
 #    python "$OPENSHIFT_REPO_DIR"wsgi/manage.py createdb --noinput --settings=settings.production
 #fi
 
-
 # Always collect static files, static dir is erased on push and we might have
 # something new.
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/manage.py collectstatic --noinput'"
