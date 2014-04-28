@@ -4,6 +4,8 @@ The latest Mezzanine with Django configured to work on Redhat Openshift (http://
 
 Includes the convenient backup cron script for DB and media files.
 
+Additionaly includes wwwroot with favicon.ico and robots.txt for adjustement.
+
 [![Requirements Status](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements.png?branch=master)](https://requires.io/bitbucket/radeksvarz/mezzanineopenshift/requirements/?branch=master)
 
 ##Quick info##
@@ -32,6 +34,8 @@ Under wsgi subfolder you can safely replace all files except:
  - local_settings.py (adjusted to recognize local PC vs the Openshift environment)
  - project_override_settings.py (your own settings)
 
+Under wsgi/wwwroot subfolder you can safely replace all files.
+ 
 Other files are just stock Mezzanine project files.
 
 Backup feature requires cron cartridge.

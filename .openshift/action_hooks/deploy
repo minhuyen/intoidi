@@ -21,3 +21,11 @@ python "$OPENSHIFT_REPO_DIR"wsgi/manage.py collectstatic --noinput
 #python "$OPENSHIFT_REPO_DIR"wsgi/manage.py createdb --noinput --settings=settings.production
 
 #python "$OPENSHIFT_REPO_DIR"wsgi/manage.py migrate --noinput --settings=settings.production
+
+
+# Make the web root files (favicon.ico, robots.txt) available 
+
+ln -sf $OPENSHIFT_REPO_DIR/wsgi/wwwroot $OPENSHIFT_DATA_DIR/static/wwwroot
+
+# Override Mezzanine default icon
+cp -rf $OPENSHIFT_REPO_DIR/wsgi/wwwroot/favicon.ico $OPENSHIFT_DATA_DIR/static/img/favicon.ico

@@ -1,0 +1,7 @@
+Included files will be served directly by Apache avoiding Django processing.
+
+This folder will be symlinked into the /static/wwwroot and files made accessible by .htaccess
+
+You can safely change them.
+
+note: They will not be visible on local dev PC.
