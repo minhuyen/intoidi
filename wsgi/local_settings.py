@@ -85,15 +85,17 @@ else:
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
 # We want to collect static files to the persistent data dir, so it is not deleted during Openshift git push deployment
+# On Openshift it is symlinked to the ./repo/wsgi/static
 # If using on local PC, the default project static dir is used
-#if os.environ.has_key('OPENSHIFT_DATA_DIR'):
-#    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'static') 
+if os.environ.has_key('OPENSHIFT_DATA_DIR'):
+    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'static') 
 
 # old Openshift compatibility (static files are deleted during git push)
-if os.environ.has_key('OPENSHIFT_REPO_DIR'):
-    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static') 
+#if os.environ.has_key('OPENSHIFT_REPO_DIR'):
+#    STATIC_ROOT = os.path.join(os.environ.get('OPENSHIFT_REPO_DIR'), 'wsgi', 'static') 
 
 # Media are stored in the persistent directory 
+# On Openshift it is symlinked under static dir
 # If using on local PC, the default project static/media dir is used
 if os.environ.has_key('OPENSHIFT_DATA_DIR'):
     MEDIA_ROOT = os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'media')

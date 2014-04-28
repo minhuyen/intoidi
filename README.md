@@ -78,8 +78,13 @@ Pull the adjustements
     git pull -s recursive -X theirs mezzanineopenshift master
         
         
-If you are on Windows, assure that the Openshift deployment hooks and backup scripts are executable
+If you are on Windows, check and assure that the Openshift deployment hooks and backup scripts are executable
 
+    git ls-tree master .openshift/action_hooks/
+    git ls-tree master .openshift/cron/daily/
+
+This should show 100755 at the beginning of build, deploy and backup.sh files, if not fix it:
+    
     git update-index --chmod=+x .openshift\action_hooks\build
     git update-index --chmod=+x .openshift\action_hooks\deploy
     git update-index --chmod=+x .openshift\cron\daily\backup.sh

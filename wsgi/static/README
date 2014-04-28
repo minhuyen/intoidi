@@ -2,6 +2,8 @@
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 
+Old (not valid) notes as backup reference:
+
 Public, static content goes here.  Users can create rewrite rules to link to
 content in the static dir.  For example, django commonly uses /media/
 directories for static content.  For example in a .htaccess file in a
