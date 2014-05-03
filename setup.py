@@ -10,19 +10,20 @@ setup(
     author_email='',
     url='',
     install_requires=[
-        'Django==1.6.3',
+        'Django==1.6.4',
         'psycopg2==2.5.2', # important as Openshift default is the older 2.0.4 version throwing errors
         'mezzanine==3.1.3',
         'django_compressor==1.3',
         'South==0.8.4',
-        # requirements bellow are optional
+        ##################################### Requirements bellow are optional ###########################
         'django-tagging==0.3.2',
-        # 'django-debug-toolbar',  - throughs url errors on Openshift!
+        # 'django-debug-toolbar',  - throws url errors on Openshift!
         'docutils==0.11',
         'django-reversion==1.8.0',
         'django-adminactions==0.4',
         'django-smuggler==0.4.1',
+        'mezzanine-page-auth==0.3.1',
+        'django-countries==2.1.2',
+        'Whoosh==2.5.7',
     ],
 )
-
-
