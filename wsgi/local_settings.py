@@ -68,7 +68,7 @@ elif ON_OPENSHIFT:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', PROJECT_DIR), 'sqlite3.db'),
+            'NAME': os.path.join(os.environ.get('OPENSHIFT_DATA_DIR'), 'sqlite3.db'),
         }
     }
 else:
