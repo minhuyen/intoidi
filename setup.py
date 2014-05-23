@@ -13,7 +13,7 @@ setup(
         'Django==1.6.5',
         'psycopg2==2.5.3', # important as Openshift default is the older 2.0.4 version throwing errors
         'mezzanine==3.1.4',
-        'django_compressor==1.3',
+        'django_compressor==1.4',
         'South==0.8.4',
         ##################################### Requirements bellow are optional ###########################
         'django-tagging==0.3.2',
@@ -24,6 +24,6 @@ setup(
         'django-smuggler==0.4.1',
         'mezzanine-page-auth==0.3.1',
         'django-countries==2.1.2',
-        'Whoosh==2.5.7',
+        'Whoosh==2.6.0',
     ],
 )
