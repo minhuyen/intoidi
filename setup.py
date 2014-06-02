@@ -19,7 +19,7 @@ setup(
         'django-tagging==0.3.2',
         # 'django-debug-toolbar',  - throws url errors on Openshift!
         'docutils==0.11',
-        'django-reversion==1.8.0',
+        'django-reversion==1.8.1',
         'django-adminactions==0.4',
         'django-smuggler==0.4.1',
         'mezzanine-page-auth==0.3.1',
