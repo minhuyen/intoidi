@@ -69,7 +69,7 @@ On local PC CD into the directory where you want to work with your application
 
 Create application and cd into the created dir (replace mezzanine with the name of your app)
 
-    rhc app create mezzanine python-2.6 postgresql-9.2 cron-1.4
+    rhc app create mezzanine python-2.7 postgresql-9.2 cron-1.4
     cd mezzanine
     
 Delete not needed or conflicting files
