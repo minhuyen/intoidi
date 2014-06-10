@@ -12,7 +12,7 @@ setup(
     install_requires=[
         'Django==1.6.5',
         'psycopg2==2.5.3', # important as Openshift default is the older 2.0.4 version throwing errors
-        'mezzanine==3.1.4',
+        'mezzanine==3.1.5',
         'django_compressor==1.4',
         'South==0.8.4',
         ##################################### Requirements bellow are optional ###########################
@@ -25,5 +25,6 @@ setup(
         'mezzanine-page-auth==0.3.1',
         'django-countries==2.1.2',
         'Whoosh==2.6.0',
+        'raven=5.0.0', # for Sentry integration - see getsentry.com
     ],
 )
