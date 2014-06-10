@@ -25,6 +25,6 @@ setup(
         'mezzanine-page-auth==0.3.1',
         'django-countries==2.1.2',
         'Whoosh==2.6.0',
-        'raven=5.0.0', # for Sentry integration - see getsentry.com
+        'raven==5.0.0', # for Sentry integration - see getsentry.com
     ],
 )
