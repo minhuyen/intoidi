@@ -14,7 +14,7 @@ setup(
         'psycopg2==2.5.3', # important as Openshift default is the older 2.0.4 version throwing errors
         'mezzanine==3.1.5',
         'django_compressor==1.4',
-        'South==0.8.4',
+        'South==1.0',
         ##################################### Requirements bellow are optional ###########################
         'django-tagging==0.3.2',
         # 'django-debug-toolbar',  - throws url errors on Openshift!
