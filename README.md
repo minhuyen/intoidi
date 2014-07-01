@@ -124,3 +124,9 @@ https://github.com/openshift/origin-server/tree/master/cartridges/openshift-orig
 Cron cartridge documentation
 
 http://openshift.github.io/documentation/oo_cartridge_guide.html#cron
+
+Special setup
+
+Apache Status Page
+
+Put the empty file named enable_public_server_statusmarker in your .openshift/markers/ directory to enable the Apache status page at URI /server-status
