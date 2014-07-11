@@ -5,26 +5,26 @@ from setuptools import setup
 setup(
     name='Mezzanine on Openshift',
     version='0.2',
-    description='Mezzanine on Openshift',
+    description='Mezzanine project template for Openshift Online',
     author='Radek Svarz',
     author_email='',
-    url='',
+    url='https://bitbucket.org/radeksvarz/mezzanineopenshift',
     install_requires=[
         'Django==1.6.5',
-        'psycopg2==2.5.3', # important as Openshift default is the older 2.0.4 version throwing errors
-        'mezzanine==3.1.7',
+        'psycopg2==2.5.3',           # important as Openshift default is the older 2.0.4 version throwing errors
+        'mezzanine==3.1.8',
         'django_compressor==1.4',
         'South==1.0',
         ##################################### Requirements bellow are optional ###########################
-        'django-tagging==0.3.2',
-        # 'django-debug-toolbar',  - throws url errors on Openshift!
-        'docutils==0.12',
-        'django-reversion==1.8.1',
-        'django-adminactions==0.4',
-        'django-smuggler==0.4.1',
-        'mezzanine-page-auth==0.3.1',
-        'django-countries==2.1.2',
-        'Whoosh==2.6.0',
-        'raven==5.0.0', # for Sentry integration - see getsentry.com
+        'django-tagging==0.3.2',     # Tagging feature for Django models
+        # 'django-debug-toolbar',    # !!! - throws url errors on Openshift! Do not use !
+        'docutils==0.12',            # Autodocumentation in admin 
+        'django-reversion==1.8.1',   # Historical versions of records in admin
+        'django-adminactions==0.5',  # mass admin import / export / graph actions in the admin lists
+        'django-smuggler==0.4.1',    # data load / dump in json from the admin URL
+        'mezzanine-page-auth==0.3.1',#
+        'django-countries==2.1.2',   # Countries model field incl. combo box implementation
+        'Whoosh==2.6.0',             # search in pure python 
+        'raven==5.0.0',              # for Sentry integration - see getsentry.com
     ],
 )
