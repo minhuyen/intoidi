@@ -21,14 +21,27 @@ The principles:
  - minimum adjustements needed
  - being able to run the application on local dev PC and server environment without file juggling
  - change behaviour via environment variables (e.g. DEBUG)
- 
+
+__Advantages__
+
+No changes needed for the local development. Use your manage.py on development PC as adviced by Mezzanine project.
+
+No changes needed for the Openshift environment. The file local_settings.py is set in general to use the Openshift provided parameters.
+
+Backups daily with files retention. I.e. daily backups are stored 14 days, weekly 60 days, monthly 300 days. Other backups are deleted in order to preserve the storage.
+
+
 ##Quick intro for Openshift people##
   
 (full instructions bellow)
   
-Copy you mezzanine project files under wsgi directory and git push or sftp your changes to Openshift.
+  1. Copy you mezzanine project files under wsgi directory.
 
-Under wsgi subfolder you can safely replace all files except:
+  2. Adjust your custom Django / Mezzanine settings in the #project_override_settings.py#
+
+  3. and git push or sftp your changes to Openshift.
+
+Under wsgi subfolder these files are crucial for the Mezzanine working on the Openshift:
 
  - application (runs the Mezzanine under the Apache web process)
  - local_settings.py (adjusted to recognize local PC vs the Openshift environment)
@@ -50,14 +63,6 @@ Set it on Openshift:
  - via ssh@openshift:  export DJANGO_DEBUG=True
 
  - or using rhc from local PC: rhc env-set DJANGO_DEBUG=True --app <appname>
-
-__Advantages__
-
-No changes needed for the local development. Use your manage.py on development PC as adviced by Mezzanine project.
-
-No changes needed for the Openshift environment. local_settings.py are set in general to use the Openshift provided parameters.
-
-Backups daily with files retention. I.e. daily backups are stored 14 days, weekly 60 days, monthly 300 days. Other backups are deleted in order to preserve the storage.
 
 __Full instructions for setup__
 
