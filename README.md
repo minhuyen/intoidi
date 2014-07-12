@@ -35,11 +35,15 @@ Backups daily with files retention. I.e. daily backups are stored 14 days, weekl
   
 (full instructions bellow)
   
-  1. Copy you mezzanine project files under wsgi directory.
+  1. If you already have, copy you mezzanine project files under wsgi directory.
 
-  2. Adjust your custom Django / Mezzanine settings in the #project_override_settings.py#
+  2. Adjust your custom Django / Mezzanine settings in the **project_override_settings.py** and additional dependencies in **setup.py**
 
-  3. and git push or sftp your changes to Openshift.
+  3. And git push or sftp your changes to Openshift.
+
+  4. Wait a while, then SSH into Openshift and execute the DB initialization (see bellow)
+
+  5. Enjoy
 
 Under wsgi subfolder these files are crucial for the Mezzanine working on the Openshift:
 
@@ -55,8 +59,8 @@ Backup feature requires cron cartridge.
 
 ##Debugging##
 
-DEBUG settings are impplicitly False when deployed on Openshift and True on local PC development (auto setup).
-Additionaly it is controlled by the environment variable DJANGO_DEBUG.
+DEBUG settings are implicitly False when deployed on Openshift and True on local PC development (auto setup).
+Additionally it is controlled by the environment variable DJANGO_DEBUG.
 
 Set it on Openshift:
 
@@ -98,7 +102,7 @@ This should show 100755 at the beginning of build, deploy and backup.sh files, i
     git update-index --chmod=+x .openshift\action_hooks\deploy
     git update-index --chmod=+x .openshift\cron\daily\backup.sh
 
-Optionaly adjust you dependencies in the setup.py.
+Optionaly adjust your dependencies in the setup.py.
 
 Commit changes
 
@@ -109,8 +113,10 @@ Push to openshift
 
     git push origin
     
-Now you can wait for a while for all dependencies to be downloaded on Openshift's server. It might report some warnings.
+Now you can wait for a while for all dependencies to be downloaded on Openshift's server. It might report some warnings. Then follow with DB initialization on Openshift.
     
+## DB @ Openshift initialization ##
+
 SSH login to openshift application (replace mezzanine with the name of your app)
 
     rhc ssh mezzanine --ssh="c:\git\bin\ssh.exe" 
