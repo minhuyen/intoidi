@@ -23,7 +23,7 @@ setup(
         'django-tagging==0.3.2',     # Tagging feature for Django models
         'docutils==0.11',            # Autodocumentation in admin 
         'django-reversion==1.8.1',   # Historical versions of records in admin
-        'django-adminactions==0.5',  # mass admin import / export / graph actions in the admin lists
+        'django-adminactions==0.4',  # mass admin import / export / graph actions in the admin lists
         'django-smuggler==0.4.1',    # data load / dump in json from the admin URL
         'mezzanine-page-auth==0.3.1',# group-level permission to pages
         'django-countries==2.1.2',   # Countries model field incl. combo box implementation
