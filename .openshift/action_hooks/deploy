@@ -4,7 +4,7 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-source $OPENSHIFT_PYTHON_DIRvirtenv/bin/activate
+source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
 
 # If no database exists create one with sample content.
 #if [ ! -f $OPENSHIFT_DATA_DIR/sqlite3.db ]
