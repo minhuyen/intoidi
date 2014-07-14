@@ -1,3 +1,8 @@
+#WARNING!#
+Openshift does not currently process python dependencies correctly. One must perform pip install <library> from within Openshift SSH shell, where library is every item in install_requires in setup.py file.
+
+I do not know, when this issue will be resolved.
+
 #MezzanineOpenshift#
 
 The latest Mezzanine with Django configured to work on Redhat Openshift (http://openshift.redhat.com).
