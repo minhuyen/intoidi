@@ -1,0 +1,34 @@
+#!/bin/bash
+# This is a simple build script and will be executed on your CI system if 
+# available.  Otherwise it will execute while your application is stopped
+# before the deploy step.  This script gets executed directly, so it
+# could be python, php, ruby, etc.
+
+# Activate VirtualEnv in order to use the correct libraries
+# not needed (yet :)
+
+# Make the static files directory for the application
+# and link to wsgi/static
+
+if [ ! -d $OPENSHIFT_DATA_DIR/static ]; then
+    mkdir $OPENSHIFT_DATA_DIR/static
+fi
+
+if [ -d $OPENSHIFT_REPO_DIR/wsgi/static ]; then
+    rm -rf $OPENSHIFT_REPO_DIR/wsgi/static
+fi
+
+ln -sf $OPENSHIFT_DATA_DIR/static $OPENSHIFT_REPO_DIR/wsgi/static
+
+# Make the media directory available for the application
+
+if [ ! -d $OPENSHIFT_DATA_DIR/media ]; then
+    mkdir $OPENSHIFT_DATA_DIR/media
+fi
+
+ln -sf $OPENSHIFT_DATA_DIR/media $OPENSHIFT_DATA_DIR/static/media
+
+# set DJANGO security configuration keys randomly
+
+export DJANGO_SECRET_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+export DJANGO_NEVERCACHE_KEY=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)

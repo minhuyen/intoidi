@@ -1,0 +1,5 @@
+This is the fallback folder for serving the static files.
+
+Should not be used for anything else.
+
+It will be deleted during deploy on Openshift. Static files will be collected to the persistant data static dir, which will be symlinked here.
