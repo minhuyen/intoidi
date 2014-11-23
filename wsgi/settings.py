@@ -364,3 +364,6 @@ except ImportError:
     pass
 else:
     set_dynamic_settings(globals())
+
+
+TIME_ZONE = "Australia/Brisbane"

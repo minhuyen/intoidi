@@ -3,3 +3,6 @@
 *.db
 .DS_Store
 .coverage
+*.iml
+.idea
+venv
