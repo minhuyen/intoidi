@@ -20,4 +20,4 @@ virtualenv venv
 
 echo "Enable virtual environment and dependencies"
 source venv/bin/activate
-pip setup.py install
+pip install -r requirements.txt
