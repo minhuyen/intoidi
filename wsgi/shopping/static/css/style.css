@@ -14,6 +14,9 @@ a {
 	text-decoration: none;
 	color: #6c6c6c;
 }
+img {
+	border: none;
+}
 *:hover {
 	transition: all .3s;
 	-moz-transition: all .3s;
@@ -44,6 +47,7 @@ header, section, footer, aside, nav, article, figure {
 }
 .header {
 	width: 100%;
+	min-width: 1000px;
 	background: url('../images/bg.png');
 }
 .shadow {
@@ -51,12 +55,14 @@ header, section, footer, aside, nav, article, figure {
 	top: 0;
 	left: 0;
 	width: 100%;
+	min-width: 1000px;
 	z-index: 1;
 	height: 632px;
 	background: url('../images/shadow.png') no-repeat;
 }
 .footer {
 	width: 100%;
+	min-width: 1000px;
 	padding-top: 15px;
 	background-color: rgb(240, 240, 240);
 }
@@ -149,6 +155,7 @@ header, section, footer, aside, nav, article, figure {
 .footer-items input.subs {
 	width: 165px;
 	height: 20px;
+	line-height: 20px;
 	padding: 2px 75px 2px 5px;
 	font-size: 12px;
 	border-radius: 4px;
@@ -252,4 +259,160 @@ header, section, footer, aside, nav, article, figure {
 	width: 100%;
 	height: 500px;
 }
+
+ /* --------------- Slider Deal Product WEEK ------------------*/
+.slider {
+	margin: 0;
+	padding: 15px 0 35px 0;
+	font-family: hel;
+}
+.slider h4 {
+	color: #094874;
+	font-weight: normal;
+	font-size: 20px;
+	margin: 15px 0;
+	padding-left: 20px;
+}
+.product-carousel {
+	position: relative; 
+	top: 0px; 
+	left: 20px; 
+	width: 960px; 
+	height: 300px; 
+}
+.slider-content {
+	cursor: move; 
+	position: absolute; 
+	left: 0px; 
+	top: 0px; 
+	width: 960px; 
+	height: 300px; 
+	overflow: hidden;
+}
+ /* jssor slider bullet navigator skin 03 css */
+/*
+.jssorb03 div           (normal)
+.jssorb03 div:hover     (normal mouseover)
+.jssorb03 .av           (active)
+.jssorb03 .av:hover     (active mouseover)
+.jssorb03 .dn           (mousedown)
+*/
+.jssorb03 div, .jssorb03 div:hover, .jssorb03 .av
+{
+    overflow:hidden;
+    cursor: pointer;
+}
+.jssorb03 div { background-position: -5px -4px; }
+.jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
+.jssorb03 .av { background-position: -65px -4px; }
+.jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
+ /* jssor slider arrow navigator skin 03 css */
+/*
+.jssora03l              (normal)
+.jssora03r              (normal)
+.jssora03l:hover        (normal mouseover)
+.jssora03r:hover        (normal mouseover)
+.jssora03ldn            (mousedown)
+.jssora03rdn            (mousedown)
+*/
+.jssora03l, .jssora03r, .jssora03ldn, .jssora03rdn
+{
+	position: absolute;
+	cursor: pointer;
+	display: block;
+    overflow:hidden;
+}
+.jssora03l:hover { background: #eb1c24; }
+.jssora03r:hover { background: #eb1c24; }
+.slider-items {
+	z-index: -1;
+}
+.slider-items img {
+	border: solid 1px #ccc;
+	width: 169px;
+	height: 232px!important;
+}
+.slider-items .sale {
+	position: absolute;
+	top: 9px; 
+	left: 9px;
+	width: 46px;
+	height: 40px;
+	padding-top: 6px;
+	line-height: 18px;
+	background: #eb1c24;
+	color: #fff;
+	font-size: 13px;
+	text-align: center;
+}
+.slider-items .product-info {
+	position: absolute;
+	width: 100%;
+	top: 236px;
+	font-size: 13px;
+}
+.slider-items .product-info p {
+	margin: 0;
+	padding: 0;
+	float: left;
+	clear: both;
+	color: #000;
+}
+.slider-items .product-info p.name-product {
+	width: 100%;
+	margin-top: 5px;
+}
+.slider-items .product-info span.user-post {
+	float: left;
+	color: #30a5e2;
+	margin-left: 5px;
+}
+.slider-items .product-info span.price, .slider-items .product-info span.price-old {
+	float: left;
+}
+.slider-items .product-info span.price {
+	font-weight: bold;
+	color: #eb1c24;
+	padding: 0 7px;
+}
+.slider-items .product-info span.price-old {
+	text-decoration: line-through;
+	color: #999;
+}
+.jssora03ldn, .jssora03rdn {
+	top: 96px!important; 
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	width: 34px; 
+	height: 34px; 
+	background: #eb1c24;
+}
+.slider-content:hover .jssora03l, .slider-content:hover .jssora03r{
+	display: block!important;
+}
+.jssora03l {
+	width: 34px; 
+	height: 34px; 
+	top: 95px!important; 
+	left: 2px;
+	background: #b6b6b6;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	display: block!important;
+}
+.jssora03r {
+	width: 34px; 
+	height: 34px; 
+	top: 95px!important; 
+	right: 2px;
+	background: #b6b6b6;
+	color: #fff;
+	text-align: center;
+	line-height: 30px;
+	display: block!important;
+}
+/* ---------------End  Slider Deal Product WEEK ------------------*/
+
 /*--------------End content---------------*/
