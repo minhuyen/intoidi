@@ -46,7 +46,7 @@ urlpatterns += patterns('',
     # "/.html" - so for this case, the template "pages/index.html"
     # should be used if you want to customize the homepage's template.
 
-    url("^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
+    url(r"^$", "mezzanine.pages.views.page", {"slug": "/"}, name="home"),
 
     # HOMEPAGE FOR A BLOG-ONLY SITE
     # -----------------------------
@@ -57,7 +57,7 @@ urlpatterns += patterns('',
     # page tree in the admin if it was installed.
 
     # url("^$", "mezzanine.blog.views.blog_post_list", name="home"),
-
+    
     # MEZZANINE'S URLS
     # ----------------
     # ADD YOUR OWN URLPATTERNS *ABOVE* THE LINE BELOW.
