@@ -536,4 +536,166 @@ header, section, footer, aside, nav, article, figure {
 }
 /* ---------------End  Slider Deal Product WEEK ------------------*/
 
+/*------------ Login --------------*/
+.ui-dialog {
+	z-index: 9999;
+	position: absolute!important;
+	background: #fff;
+	outline: none;
+	font-family: hel;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+.ui-widget-overlay {
+	background: url('../images/overlay.png') top left;
+	/* support: IE8; */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.ui-dialog-titlebar button {
+	float: right;
+	height: 21px;
+	width: 21px;
+	position: relative;
+	z-index: 9;
+	top: 15px;
+	right: 20px;
+	text-indent: -9999px;
+	overflow: hidden;
+	background: url('../images/close.jpg') no-repeat;
+	border: none;
+	cursor: pointer;
+}
+.ui-dialog h3 {
+	background: #0e71b4;
+	font-size: 20px;
+	color: #fff;
+	font-weight: normal;
+	margin: -25px 0 0 0;
+	padding: 20px 0 20px 20px;
+	border-bottom: solid 3px #f7941d;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+}
+.form-login-detail {
+	padding: 20px 45px;	
+	font-size: 14px;
+}
+.form-login-col {
+	display: block;
+	padding-bottom: 5px;
+}
+.form-login-col span {
+	width: 130px;
+	display: inline-block;	
+	color: #472900;
+}
+.form-login-col input[type="text"] {
+	border: solid 1px #ccc;
+	padding: 3px 5px;
+	height: 26px;
+	line-height: 26px;
+	width: 265px;
+}
+.form-login-detail input[type="checkbox"] {
+	margin-left: 130px;
+	margin-top: 8px;
+}
+.form-login-detail .btn-login {
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: #0e71b4;
+	padding: 10px 15px;
+	margin-left: 130px;
+	margin-top: 15px;
+	color: #fff;
+	display: inline-block;
+	font-family: hel-bold;
+}
+.login-submit .btn-signup {
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: #f7941d;
+	padding: 10px 45px;
+	margin-top: 10px;
+	color: #fff;
+	display: inline-block;
+	font-family: hel-bold;
+}
+.form-login-detail .forgot-pass {
+	color: #0e71b4;
+	position: relative;
+	left: 60px;
+	font-weight: bold;
+}
+.login-submit {
+	border-top: solid 1px #d5d0cd;
+	font-size: 14px;
+	float: left;
+	text-align: center;
+	width: 100%;
+	clear: both;
+	padding: 17px 0;	
+	background: #fefbc4;
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+}
+.form-signup-detail {
+	text-align: center;
+}
+.btn-signin {
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: #0e71b4;
+	padding: 10px 15px;
+	width: 240px;
+	margin-top: 15px;
+	color: #fff;
+	display: inline-block;
+	font-family: hel-bold;
+}
+.title-signup {
+	font-size: 15px;
+	color: #472900;
+	margin: 0 0 20px ;
+	padding: 0;
+}
+.form-signup-detail .form-login-col {
+	text-align: left;
+}
+.signup-apply {
+	color: #472900;
+	margin-top: 5px;
+	display: inline-block;
+}
+.signup-apply a {
+	color: #3a00ff;
+}
+.signup-forgot {
+	padding-top: 10px;
+	margin-top: 15px;
+	line-height: 20px;
+	border-top: solid 1px #ccc;
+}
+.signup-forgot a {
+	color: #0e71ce;
+}
+.form-forgot-detail {
+	text-align: center;
+}
+.form-forgot-detail h5 {
+	font-weight: normal;
+	font-size: 14px;
+}
+/*------------ End Login --------------*/
+
 /*--------------End content---------------*/

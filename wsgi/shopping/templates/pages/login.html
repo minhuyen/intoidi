@@ -12,10 +12,30 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="js/jssor.js"></script>
 <script type="text/javascript" src="js/jssor.slider.min.js"></script>
 <script type="text/javascript" src="js/resize-home.js"></script>
 <script type="text/javascript" src="js/resize.js"></script>
+<script>
+  $(function() {	    
+        $( ".form-login" ).dialog({   	 	
+        	position: { my: 'top', at: 'top+90' },
+        	  autoOpen: true,
+	          modal: true,
+	          width: 637,
+	          show: {
+	            effect: "blind",
+	            duration: 800
+	          },
+	          hide: {
+	            effect: "fade",
+	            duration: 800
+	          }
+    	});      	    
+  });
+</script>
 </head>
 
 <body>
@@ -199,6 +219,23 @@
 						</div>	
 					</div>				
 				</div>
+				<div class="form-login form-info-error" style="display: none;">
+	                <h3>Đăng nhập</h3> 
+	                <div class="form-login-detail">
+	                	<div class="form-login-col">
+	                		<span>Email/Điện thoại:</span><input type="text" class="email-login">
+	                	</div>
+	                	<div class="form-login-col">
+	                		<span>Mật khẩu: </span><input type="text" class="email-login">
+	                	</div>
+	                	<input type="checkbox" class="remember-password"> Nhớ mật khẩu <br>
+	                	<a class="btn-login" href="#">Đăng nhập</a> <a class="forgot-pass" href="#">Quên mật khẩu ?</a>
+	                </div>
+	                <div class="login-submit">
+	                	<span>Chưa có tài khoản ?</span><br>
+	                	<a class="btn-signup" href="#">Đăng ký</a>
+	                </div>
+	            </div>
 			</div>
 			<!-- /. Content -->
 
