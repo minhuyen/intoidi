@@ -1,21 +1,23 @@
 <!DOCTYPE html>
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Intoidi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/agile_carousel.css">
+
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link rel="stylesheet" href="{% static "css/agile_carousel.css" %}">
 
 
 
 <!-- Latest compiled and minified JavaScript -->
-<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
-<script type="text/javascript" src="js/jssor.js"></script>
-<script type="text/javascript" src="js/jssor.slider.min.js"></script>
-<script type="text/javascript" src="js/resize-home.js"></script>
-<script type="text/javascript" src="js/resize.js"></script>
+<script type="text/javascript" src="{% static "js/jquery-1.10.1.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jssor.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jssor.slider.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/resize-home.js"%}"></script>
+<script type="text/javascript" src="{% static "js/resize.js"%}"></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
 			<div class="header">
 				<div class="shadow"></div>
 				<div class="header-items">
-					<a class="logo" href="#"><img src="images/logo.png"></a>
+					<a class="logo" href="#"><img src="{% static "images/logo.png" %}"></a>
 					<div class="nav">
 						<ul>
 							<li><a href="#">Create A Shirt</a> | </li>
@@ -54,21 +56,21 @@
 							<div class="banner-content" id="banner-content">
 								<div u="slides" class="banner-content-items">
             						<div>
-						                <img u="image" src="images/banner1.png" />
+						                <img u="image" src="{% static "images/banner1.png" %}" />
 						                <div u="caption" t="RTT|2" t2="NO" r3="137.5%" du3="3000" d3="500" style="position: absolute; width: 445px; height: 300px; top: 100px; left: 185px;">
-						                    <img src="images/shirt-logo.png" class="shirt-logo" />
-						                    <img u="caption" t="CLIP|LR" t2="NO" class="banner-color" src="images/color.png"/>
-						                    <img u="caption" t="T" du="2000" t2="NO" src="images/mouse.png" class="banner-mouse" />
+						                    <img src="{% static "images/shirt-logo.png"%}" class="shirt-logo" />
+						                    <img u="caption" t="CLIP|LR" t2="NO" class="banner-color" src="{% static "images/color.png" %}"/>
+						                    <img u="caption" t="T" du="2000" t2="NO" src="{% static "images/mouse.png" %}" class="banner-mouse" />
 						                </div>
 						            </div>
 						            <div>
-						                <img u="image" src="images/banner2.png" />						               
+						                <img u="image" src="{% static "images/banner2.png" %}" />
 						            </div>
 						            <div>
-						                <img u="image" src="images/banner3.png" />						               
+						                <img u="image" src="{% static "images/banner3.png" %}" />
 						            </div>
 						            <div>
-						                <img u="image" src="images/banner4.png" />						               
+						                <img u="image" src="{% static "images/banner4.png" %}" />
 						            </div>						        
             					</div>
 							        <!-- bullet navigator container -->
@@ -92,7 +94,7 @@
 					    <!-- Wrapper for slides -->
 					    <div u="slides" class="slider-content">
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img5.png" />
+				           		<img u="image" src="{% static "images/img5.png" %}"/>
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -101,7 +103,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img2.png" />
+				           		<img u="image" src="{% static "images/img2.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -110,7 +112,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img1.png" />
+				           		<img u="image" src="{% static "images/img1.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -119,7 +121,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img2.png" />
+				           		<img u="image" src="{% static "images/img2.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -128,7 +130,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img4.png" />
+				           		<img u="image" src="{% static "images/img4.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -137,7 +139,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img3.png" />
+				           		<img u="image" src="{% static "images/img3.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -146,7 +148,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img5.png" />
+				           		<img u="image" src="{% static "images/img5.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -155,7 +157,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img4.png" />
+				           		<img u="image" src="{% static "images/img4.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -164,7 +166,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img3.png" />
+				           		<img u="image" src="{% static "images/img3.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -173,7 +175,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img2.png" />
+				           		<img u="image" src="{% static "images/img2.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
@@ -182,7 +184,7 @@
 				           		</div>
 				           	</div>
 				           	<div class="slider-items">
-				           		<img u="image" src="images/img1.png" />
+				           		<img u="image" src="{% static "images/img1.png" %}" />
 				           		<span class="sale">Save 20%</span>
 				           		<div class="product-info">
 				           			<p class="name-product">Tên sản phẩm</p>
