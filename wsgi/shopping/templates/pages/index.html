@@ -15,11 +15,175 @@
     <script type="text/javascript" src="{% static "js/resize-home.js"%}"></script>
     <script type="text/javascript" src="{% static "js/resize.js"%}"></script>
 {% endblock %}
+
+{% block banner %}
+                    <div class="banner">
+                        <div class="banner-info">
+                            <div class="info-detail">
+                                <h2>Custom T-Shirts</h2>
+                                <span>“Create your own shirts</span>
+                                <span>in our online design studio”</span>
+                                <a href="#" class="start-design">Start Designing Now</a>
+                            </div>
+                            <p class="free-ship">Free Shipping on Orders Over $100</p>
+                            <p class="order">Orders of $100+ get free shipping all day, </p>
+                            <p class="order">every day. Valid within the continental US.</p>
+                        </div>
+                        <div class="banner-img">
+                            <div class="banner-content" id="banner-content">
+                                <div u="slides" class="banner-content-items">
+                                    <div>
+                                        <img u="image" src="{% static "images/banner1.png" %}" />
+                                        <div u="caption" t="RTT|2" t2="NO" r3="137.5%" du3="3000" d3="500" style="position: absolute; width: 445px; height: 300px; top: 100px; left: 185px;">
+                                            <img src="{% static "images/shirt-logo.png"%}" class="shirt-logo" />
+                                            <img u="caption" t="CLIP|LR" t2="NO" class="banner-color" src="{% static "images/color.png" %}"/>
+                                            <img u="caption" t="T" du="2000" t2="NO" src="{% static "images/mouse.png" %}" class="banner-mouse" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <img u="image" src="{% static "images/banner2.png" %}" />
+                                    </div>
+                                    <div>
+                                        <img u="image" src="{% static "images/banner3.png" %}" />
+                                    </div>
+                                    <div>
+                                        <img u="image" src="{% static "images/banner4.png" %}" />
+                                    </div>                              
+                                </div>
+                                    <!-- bullet navigator container -->
+                                    <div u="navigator" class="jssorb21">
+                                        <!-- bullet navigator item prototype -->
+                                        <div u="prototype" style="POSITION: absolute;border-radius: 15px; WIDTH: 14px; HEIGHT: 14px; text-align:center; line-height:19px; color:White; font-size:12px;"></div>
+                                    </div>
+                                    <!-- Bullet Navigator Skin End -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /. Banner -->
+ {% endblock %}
+
+
+
 {% block all_content %}
-    <div id="content">
-    {#        Code in here      #}
-    </div>
+    <!-- Content -->
+            <div class="content">
+                <div class="slider">
+                    <h4>Deal of the week </h4>
+                    <div class="product-carousel" id="product-carousel">                        
+                        <!-- Wrapper for slides -->
+                        <div u="slides" class="slider-content">
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img5.png" %}"/>
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img2.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img1.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img2.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img4.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img3.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img5.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img4.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img3.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img2.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>
+                            <div class="slider-items">
+                                <img u="image" src="{% static "images/img1.png" %}" />
+                                <span class="sale">Save 20%</span>
+                                <div class="product-info">
+                                    <p class="name-product">Tên sản phẩm</p>
+                                    <p>Đăng bởi: </p> <span class="user-post"> member</span>
+                                    <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+                                </div>
+                            </div>                
+                            <!-- Arrow Left -->
+                            <span u="arrowleft" class="jssora03l" style="width: 34px;height: 34px;top: 95px; 
+    left: 2px;">&lt;</span>
+                            <!-- Arrow Right -->
+                            <span u="arrowright" class="jssora03r" style="width: 34px;height: 34px;top: 95px; 
+    right: 2px">&gt;</span>               
+                        </div>  
+                    </div>              
+                </div>
+            </div>
+            <!-- /. Content -->
 {% endblock %}
+
 
 
 

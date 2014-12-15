@@ -16,9 +16,9 @@
     {% endifinstalled %}
 
     {% compress css %}
-        <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-        <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-        <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+        <!--<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">-->
+        <!--<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">-->
+        <!--<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">-->
         <link rel="stylesheet" href="{% static "css/main.css" %}">
 
         {% if LANGUAGE_BIDI %}
@@ -30,14 +30,26 @@
                 <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
             {% endif %}
         {% endifinstalled %}
-        {% block extra_css %}{% endblock %}
+        {% block extra_css %}
+             <!-- home page-->
+                <link rel="stylesheet" href="{% static "css/style.css" %}">
+                <link rel="stylesheet" href="{% static "css/agile_carousel.css" %}">
+            <!-- end home page--->
+        {% endblock %}
     {% endcompress %}
 
     {% compress js %}
-        <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+        <!--<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
         <script src="{% static "js/bootstrap.js" %}"></script>
-        <script src="{% static "js/bootstrap-extras.js" %}"></script>
-        {% block extra_js %}{% endblock %}
+        <script src="{% static "js/bootstrap-extras.js" %}"></script>-->
+        {% block extra_js %}
+            <!-- Latest compiled and minified JavaScript -->
+            <script type="text/javascript" src="{% static "js/jquery-1.10.1.min.js" %}"></script>
+            <script type="text/javascript" src="{% static "js/jssor.js" %}"></script>
+            <script type="text/javascript" src="{% static "js/jssor.slider.min.js" %}"></script>
+            <script type="text/javascript" src="{% static "js/resize-home.js"%}"></script>
+            <script type="text/javascript" src="{% static "js/resize.js"%}"></script>
+        {% endblock %}
     {% endcompress %}
 
     <!--[if lt IE 9]>
@@ -49,53 +61,32 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
+<div class="wrapper container-home container-fluid">
+    <div class="main container">
+        {% block header%}
+        <div class="header">
+            <div class="shadow"></div>
+            <div class="header-items">
+                <a class="logo" href="#"><img src="{% static "images/logo.png" %}"></a>
+                <div class="nav">
+                    {% page_menu "pages/menus/dropdown.html" %}
+                </div>
+                {% block banner %}
+                {% endblock %}
+            </div>
+        </div>    
+        {% endblock%} 
+   
+        {% block all_content %}
+            <div class="container">
+            </div>
+        {% endblock %}
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">{% trans "Toggle Navigation" %}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            {% if settings.SITE_TITLE %}<a class="navbar-brand" href="/">{{ settings.SITE_TITLE }}</a>{% endif %}
-            {% if settings.SITE_TAGLINE %}<p class="navbar-text visible-lg">{{ settings.SITE_TAGLINE }}</p>{% endif %}
-        </div>
-        <div class="navbar-collapse collapse">
-            {% search_form "all" %}
-            {% page_menu "pages/menus/dropdown.html" %}
-        </div>
-    </div>
+        {% block footer %}
+            {% page_menu "pages/menus/footer.html" %}
+        {% endblock %}
+    </div> 
 </div>
-
-{% block all_content %}
-    <div class="container">
-    </div>
-{% endblock %}
-
-<footer>
-    <div class="container">
-        {% page_menu "pages/menus/footer.html" %}
-
-        <div class="row">
-            <p class="site-info text-center">
-                {% trans "Powered by" %}
-                <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
-                <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
-                {% trans "and" %}
-                <a href="http://www.djangoproject.com">Django</a>
-                <span class="separator">|</span>
-                {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
-                {% ifinstalled mezzanine.mobile %}
-                    <span class="separator">|</span>
-                    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-                {% endifinstalled %}
-            </p>
-        </div>
-    </div>
-</footer>
-
 {% include "includes/footer_scripts.html" %}
 
 </body>
