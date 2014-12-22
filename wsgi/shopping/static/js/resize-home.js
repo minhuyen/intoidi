@@ -74,7 +74,7 @@ jQuery(document).ready(function ($) {
     function ScaleSlider() {
         var bodyWidth = document.body.clientWidth;
         if (bodyWidth)
-            jssor_slider_banner.$ScaleWidth(Math.min(bodyWidth, 587));
+            jssor_slider_banner.$ScaleWidth(Math.min(bodyWidth, 1000));
         else
             window.setTimeout(ScaleSlider, 30);
     }
