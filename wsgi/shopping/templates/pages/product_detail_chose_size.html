@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Intoidi</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/product.css">
+<link rel="stylesheet" href="css/agile_carousel.css">
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/jquery.elevatezoom.js"></script>
+<script type="text/javascript" src="js/jssor.js"></script>
+<script type="text/javascript" src="js/jssor.slider.min.js"></script>
+<script type="text/javascript" src="js/resize.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        var options = { 
+        	$AutoPlay: true,
+        	$SlideWidth: 261, //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+            $SlideHeight: 235,
+
+            $BulletNavigatorOptions: {
+                $Class: $JssorBulletNavigator$,
+                $ChanceToShow: 2,
+              
+                    $SpacingX: 8,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                   
+            }
+        };
+        var optionsTab = {
+                $AutoPlay: false,                                    //[Optional] Whether to auto play, to enable slideshow, eater than 1, or parking position is not 0)
+				$DragOrientation: 0, 
+                $ThumbnailNavigatorOptions: {
+                    $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+
+                    $ActionMode: 1,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+                    $AutoCenter: 3,                             //[Optional] Auto center thumbnail items in the thumbnail navigator container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 3
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange thumbnails, default value is 1
+                    $SpacingX: 0,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+                    $SpacingY: 0,                                   //[Optional] Vertical space between each thumbnail in pixel, default value is 0
+                    $DisplayPieces: 5,                              //[Optional] Number of pieces to display, default value is 1
+                    $ParkingPosition: 0,                            //[Optional] The offset position to park thumbnail
+                    $Orientation: 1,                                //[Optional] Orientation to arrange thumbnails, 1 horizental, 2 vertical, default value is 1
+                    $DisableDrag: true                              //[Optional] Disable drag or not, default value is false
+                }
+            };
+
+        var hot_deal = new $JssorSlider$('hotdeal', options);     
+        var tabs = new $JssorSlider$("tab-design", optionsTab);  
+
+
+        $("#product-view").elevateZoom({constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true, gallery:'gal1', cursor: 'pointer', galleryActiveClass: "active"}); 
+        //pass the images to Fancybox 
+        $("#product-view").bind("click", function(e) { 
+        	var ez = $('#product-view').data('elevateZoom');	
+        	$.fancybox(ez.getGalleryList()); 
+        	return false; 
+        }); 
+    });
+</script>
+<script>
+  $(function() {	    
+        $( ".chose-size" ).dialog({   	 	
+        	position: { my: 'top', at: 'top+90' },
+        	  autoOpen: true,
+	          modal: true,
+	          width: 400,
+	          show: {
+	            effect: "blind",
+	            duration: 700
+	          },
+	          hide: {
+	            effect: "fade",
+	            duration: 300
+	          },
+	          dialogClass: 'support-size'
+    	});      	    
+  });
+</script>
+</head>
+
+<body>
+	<div class="wrapper container-home container-fluid">
+		<div class="main container">	
+			<!-- Header -->
+			<div class="header">
+				<div class="shadow shadow-child"></div>
+				<div class="header-items">
+					<a class="logo" href="#"><img src="images/logo.png"></a>
+					<div class="nav">
+						<ul>
+							<li><a href="#">Create A Shirt</a> | </li>
+							<li><a href="#">Product Catalog</a> | </li>
+							<li><a href="#">Forum</a> | </li>
+							<li><a href="#">Help</a> | </li>
+							<li><a href="#">Cart <span class="cart-count">(0)</span></a> | </li>
+							<li><a href="#">Account</a> | </li>
+							<li>
+								<a href="#">Contact</a> 
+								<ul>
+									<span class="arrow-top"></span>
+									<li><a href="#">Create A Shirt</a>  </li>
+									<li><a href="#">Product Catalog</a>  </li>
+									<li><a href="#">Forum</a>  </li>
+									<li><a href="#">Help</a>  </li>
+									<li><a href="#">Cart <span class="cart-count">(0)</span></a> </li>
+									<li><a href="#">Account</a>  </li>
+									<li><a href="#">Contact</a>  </li>
+								</ul>
+							 </li>
+						</ul>
+					</div>
+				
+				</div>
+			</div>
+			<!-- /. Header -->	
+			<!-- Content -->
+		  	<div class="content">
+				<div class="product-detail">
+					<div class="product-info">
+						<h2 class="title-detail">Love Never Fails</h2><span class="post-user"> đăng bởi: member</span>
+						<div class="break"><a href="#">Trang chủ</a> / Áo in hình</div>
+						<div class="product-info-detail">
+							<div class="detail">
+								<div class="product-detail-slider">
+									<img id="product-view" src="images/small/image1.png" data-zoom-image="images/large/image1.jpg"/> 
+									<div id="gal1"> 
+										<a href="#" class="active" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg"> 
+											<img id="img_01" src="images/thumb/image1.png" /> 
+										</a> 
+										<a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg"> 
+											<img id="img_01" src="images/thumb/image2.png"  /> 
+										</a> 
+										<a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg"> 
+											<img id="img_01" src="images/thumb/image3.png"  /> 
+										</a> 
+										<a href="#" data-image="images/small/image4.png" data-zoom-image="images/large/image4.jpg"> 
+											<img id="img_01" src="images/thumb/image4.png"  /> 
+										</a> 
+									</div>
+								</div>
+								<div class="product-detail-items">
+									<div class="price">
+										<span>199.000₫</span>
+										<span class="price-old">250.000₫</span>
+									</div>
+									<div class="facts">								
+										<div class="facts-items">
+											<span class="facts-title">Availabilty:</span>
+											<span class="price-old">Available in stock</span>
+										</div>
+										<div class="facts-items">
+											<span class="facts-title">Profuct Code:</span>
+											<span class="price-old">No. Ctaw945</span>
+										</div>
+										<div class="facts-items">
+											<span class="facts-title">Manfactuer:</span>
+											<span class="price-old">Nicka ccorparation</span>
+										</div>
+										<div class="facts-items">
+											<span class="facts-title">Review points:</span>
+											<span class="price-old">25 points</span>
+										</div>
+									</div>
+									<div class="code-shit">
+										Mã thiết kế: <span>75092306</span> <a href="#" class="edit-shit">(chỉnh sửa thiết kế)</a>				
+									</div>
+									<div class="list-color">
+										<a href="#" class="cl-brown"></a>
+										<a href="#" class="cl-red"></a>
+										<a href="#" class="cl-orange"></a>
+										<a href="#" class="cl-white"></a>
+									</div>
+									<div class="quantity">
+										<span class="qua-title">Quantity:</span> 
+										<div class="quatity-val">
+											<input type="text" value="1">
+											<a href="#" class="arrow-up"></a>
+											<a href="#" class="arrow-dow"></a>
+										</div>
+									</div>	
+									<div class="size">
+										<span class="qua-title">Size:</span>
+										<select>
+											<option>M</option>
+											<option>MM</option>
+											<option>L</option>
+										</select>
+										<a href="#" class="guide">(Hướng dẫn chọn)</a>
+									</div>
+									<a href="#" class="btn-addcart">Add to cart</a>
+									<div class="favorite">
+										<span class="like">27 người thích</span>
+										<p>Đã mua: <span>612</span> | Còn bán 7 ngày 17:11':10"</p>
+										<p>Quý khách có thể đến mua TRỰC TIẾP tại cửa hàng ở Đà Nẵng</p>
+										<p class="office">VP Đà Nẵng  <span>(có hàng)</span></p>
+									</div>
+								</div>
+								<div class="comment-face">
+									<h4>ĐỂ LẠI BÌNH LUẬN</h4>
+									<div class="com">
+										<img src="images/comment.png" />
+									</div>
+								</div>
+							</div>							
+							<div class="product-info-viewed">
+							<h4>SẢN PHẨM ĐÃ XEM</h4>
+							<div class="list-viewed">
+								<div class="list-viewed-items">
+									<a href="#"><img src="images/view1.png" /></a>
+									<p>Tên sản phẩm</p>
+									<p>Đăng bởi : <span>member</span></p>
+									<p>Giá: <span class="price">199,000₫</span></p>
+								</div>
+								<div class="list-viewed-items">
+									<a href="#"><img src="images/view2.png" /></a>
+									<p>Tên sản phẩm</p>
+									<p>Đăng bởi : <span>member</span></p>
+									<p>Giá: <span class="price">199,000₫</span></p>
+								</div>
+								<div class="list-viewed-items">
+									<a href="#"><img src="images/view3.png" /></a>
+									<p>Tên sản phẩm</p>
+									<p>Đăng bởi : <span>member</span></p>
+									<p>Giá: <span class="price">199,000₫</span></p>
+								</div>
+								<div class="list-viewed-items">
+									<a href="#"><img src="images/view4.png" /></a>
+									<p>Tên sản phẩm</p>
+									<p>Đăng bởi : <span>member</span></p>
+									<p>Giá: <span class="price">199,000₫</span></p>
+								</div>
+							</div>
+							<div class="hot-deal" id="hotdeal" style="position: relative; top: 0px; left: 0px; width: 261px; height: 235px;">	
+								<span class="hot-tit">HOT DEAL</span>							
+								<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 261px; height: 235px;">
+							        <div><img u="image" src="images/hotdeal.png" /></div>
+							        <div><img u="image" src="images/hotdeal.png" /></div>
+							        <div><img u="image" src="images/hotdeal.png" /></div>							        
+							    </div>
+						     	<div u="navigator" class="jssorb21" style="position: absolute; bottom: 10px; right: 10px;">
+					            <!-- bullet navigator item prototype -->
+					            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px; text-align:center; line-height:12px; color:White; font-size:12px;"></div>
+					        </div>
+							</div>
+						</div>
+						</div>						
+					</div>
+					<!-- /. Product Info -->
+
+					<div class="product-designer" >
+						
+						<div id="tab-design" style="position: relative; top: 0px; left: 0px; width: 1000px; height: 231px; background: #fff; overflow: hidden; ">
+        
+					        <!-- Slides Container -->
+					        <div u="slides" class="tab-content" style=" position: absolute; left: 0px; top: 29px; width: 1000px; height: 200px; overflow: hidden;">
+					            <div>
+					                <div style="margin: 10px; overflow: hidden; color: #000;">Slide 1 content, place any html here.</div>
+					                <div u="thumb">Designer</div>
+					            </div>
+					            <div>
+					                <div style="margin: 10px; overflow: hidden; color: #000;">Slide 2 content, place any html here.</div>
+					                <div u="thumb">Thông tin thiết kế</div>
+					            </div>
+					            
+					        </div>	
+					        <div u="thumbnavigator" class="jssort12" style="position: absolute; width: 200px; height: 30px; left:0px; top: 0px;">					            
+					            <div u="slides" class="tabs-items" style="cursor: move; top:0px; left:0px;">
+					                <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 100px; HEIGHT: 30px; TOP: 0; LEFT: 0; padding:0px;">
+					                    <div class=w><div u="thumbnailtemplate" class="c" style=" WIDTH: 100%; HEIGHT: 100%; position:absolute; TOP: 0; LEFT: 0; line-height:28px; text-align:center;"></div></div>
+					                </div>
+					            </div>
+					            <!-- Thumbnail Item Skin End -->
+					        </div>				       
+					    </div>
+
+					</div>
+					<!-- /. Product Designer -->
+
+					<div class="product-connection">
+						<div class="slider">
+							<h4>CÓ THỂ BẠN THÍCH </h4>
+							<div class="product-carousel" id="product-carousel">						
+							    <!-- Wrapper for slides -->
+							    <div u="slides" class="slider-content">
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img5.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img2.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img1.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img2.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img4.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img3.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img5.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img4.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img3.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img2.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="images/img1.png" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>			      
+						        	<!-- Arrow Left -->
+							        <span u="arrowleft" class="jssora03l" style="width: 34px;height: 34px;top: 95px; left: 2px;"><</span>
+							        <!-- Arrow Right -->
+							        <span u="arrowright" class="jssora03r" style="width: 34px;height: 34px;top: 95px; right: 2px">></span>				  
+								</div>	
+							</div>				
+						</div>
+					</div>
+					<!-- /. Product Designer -->
+				</div>	
+				<div class="chose-size" style="display: none;">
+					<h3>Thông tin size</h3> 
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<th width="25%">Size</th>
+							<th>1/2 vòng ngực</th>
+							<th>Chiều dài áo</th>
+							<th>Cân nặng</th>
+						</tr>
+						<tr>
+							<td>XS</td>
+							<td>44</td>
+							<td>64</td>
+							<td>40-48kg</td>
+						</tr>
+						<tr>
+							<td>S</td>
+							<td>46</td>
+							<td>66</td>
+							<td>52-60kg</td>
+						</tr>
+						<tr>
+							<td>M</td>
+							<td>48</td>
+							<td>68</td>
+							<td>52-60kg</td>
+						</tr>
+						<tr>
+							<td>L</td>
+							<td>50</td>
+							<td>69</td>
+							<td>65-70kg</td>
+						</tr>
+						<tr>
+							<td>XL</td>
+							<td>52</td>
+							<td>70</td>
+							<td>77-85kg</td>
+						</tr>
+						<tr>
+							<td>XXL</td>
+							<td>54</td>
+							<td>71</td>
+							<td>77-85kg</td>
+						</tr>
+						<tr>
+							<td>XXXL</td>
+							<td>56</td>
+							<td>72</td>
+							<td>85-90kg</td>
+						</tr>
+						<tr>
+							<td>4XL</td>
+							<td>58</td>
+							<td>73</td>
+							<td>90-95kg</td>
+						</tr>
+						<tr>
+							<td>5XL</td>
+							<td>60</td>
+							<td>74</td>
+							<td>95-110kg</td>
+						</tr>
+					</table>
+					<div class="size-demo"></div>
+				</div>	
+			</div>
+			<!-- /. Content -->
+
+			<!-- Footer -->
+			<div class="footer">
+				<div class="footer-content">
+			  		<div class="footer-items footer-items-add">
+			  			<h6>Suport – We're here for you!</h6>
+			  			<p class="phone">0935 288 488</p>
+			  			<p class="email"> <a href="mailto:hotro@intoidi.com"> hotro@intoidi.com</a></p>
+			  			<p class="address">190 Ông ích khiêm - Đà Nẵng</p>
+			  		</div>
+			  		<div class="footer-items">
+			  			<h6>We promise</h6>
+			  			<a href="#">30 Day Exchange Policy</a>
+			  			<a href="#">Delivery in 3-7 working days</a>
+			  			<a href="#">High quality printing</a>
+			  			<a href="#">Cards accepted</a>
+			  		</div>
+			  		<div class="footer-items footer-items-information">
+			  			<h6>Information</h6>
+			  			<a href="#">Contact us</a>
+			  			<a href="#">My orders</a>
+			  			<a href="#">Wash Instruction</a>
+			  			<a href="#">Sitemap</a>
+			  		</div>
+			  		<div class="footer-items footer-items-subscribe">
+			  			<h6>Our Newsletter</h6>
+			  			<input type="text" placeholder="Email" class="subs">
+			  			<a href="" class="subscribe">Subscribe</a>
+			  		</div>
+			  		<div class="footer-items footer-items-social">
+			  			<h6>Follow us</h6>
+			  			<a href="#" class="face"></a>
+			  			<a href="#" class="twi"></a>
+			  			<a href="#" class="google"></a>
+			  		</div>
+			  		<div class="language">
+			  			<a href="#" class="vi" title="Vietnamese"></a>
+			  			<a href="#" class="en" title="English"></a>
+			  		</div>
+			  		<a href="#" class="copyright">Copyright © 2014 intoidi.com</a>
+				</div>
+			</div>
+			<!-- /. Footer -->
+		</div>
+		<!-- /. Main Content -->
+	</div>
+</body>
+</html>
