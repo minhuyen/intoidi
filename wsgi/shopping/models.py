@@ -32,7 +32,7 @@ class Product(models.Model):
 
 
 class ProductImage(models.Model):
-    image = FileField(verbose_name=_("Image Product"), upload_to("product.images.file", "production"))
+    image = FileField(verbose_name=_("Image Product"), upload_to=upload_to("product.images.file", "production"))
     description = models.CharField(_("Description"), blank=True, max_length=100)
     product = models.ForeignKey("Product", related_name="images")
 
