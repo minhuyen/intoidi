@@ -69,6 +69,8 @@ class Category(models.Model):
     products = models.ManyToManyField("Product", blank=True, verbose_name=_("Products"))
     options = models.ManyToManyField("ProductOption", blank=True, verbose_name=_("Product options"),
                                      related_name="product_options")
+    def __unicode__(self):
+        return self.name
 
 
 class Discount(models.Model):

@@ -6,44 +6,55 @@
 		<div class="product">
 			<div class="product-menu">
 				<h4>Thể Loại 2</h4>
-				<ul>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in trơn</a></li>
-					<li><a href="#">Áo thun trơn wash</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-				</ul>
+                {% if categories %}
+                    {% for category in categories %}
+                        {% if forloop.first %}
+                            <ul>
+                        {% endif %}
+                                <li><a href="#">{{ category.name }}</a></li>
+                        {% if forloop.last %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
 				<h4>Thể Loại 2</h4>
-				<ul>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in trơn</a></li>
-					<li><a href="#">Áo thun trơn wash</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-				</ul>
-				<h4>Thể Kế Của Thành Viên</h4>
+                {% if categories %}
+                    {% for category in categories %}
+                        {% if forloop.first %}
+                            <ul>
+                        {% endif %}
+                                <li><a href="#">{{ category.name }}</a></li>
+                        {% if forloop.last %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+				<h4>Thiết Kế Của Thành Viên</h4>
 				<ul>
 					<li><a href="#">Yêu thích nhất</a></li>
 					<li><a href="#">Hình thiết kế</a></li>							
 				</ul>
 				<h4 class="tit-color">Màu sắc</h4>
-				<div class="list-color">
-					<a href="#" class="cl-brown"></a>
-					<a href="#" class="cl-red"></a>
-					<a href="#" class="cl-orange"></a>
-					<a href="#" class="cl-white"></a>
-					<a href="#" class="cl-purple"></a>
-					<a href="#" class="cl-blue active"></a>
-					<a href="#" class="cl-yellow"></a>
-					<a href="#" class="cl-green"></a>
-					<a href="#" class="cl-green1"></a>
-					<a href="#" class="cl-green2"></a>
-					<a href="#" class="cl-pink"></a>
-				</div>
+                <div class="list-color">
+                    {% if color_list %}
+                        {% for color in color_list %}
+                            <a href="#" style="background: {{ color.name }}"></a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+{#				<div class="list-color">#}
+{#					<a href="#" class="cl-brown"></a>#}
+{#					<a href="#" class="cl-red"></a>#}
+{#					<a href="#" class="cl-orange"></a>#}
+{#					<a href="#" class="cl-white"></a>#}
+{#					<a href="#" class="cl-purple"></a>#}
+{#					<a href="#" class="cl-blue active"></a>#}
+{#					<a href="#" class="cl-yellow"></a>#}
+{#					<a href="#" class="cl-green"></a>#}
+{#					<a href="#" class="cl-green1"></a>#}
+{#					<a href="#" class="cl-green2"></a>#}
+{#					<a href="#" class="cl-pink"></a>#}
+{#				</div>#}
 			</div>
 			<div class="product-content">
 				<h4>MỚI NHẤT / YÊU THÍCH nhất</h4>
