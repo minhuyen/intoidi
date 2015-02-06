@@ -48,8 +48,8 @@
 			<div class="product-content">
 				<h4>MỚI NHẤT / YÊU THÍCH nhất</h4>
 				<div class="product-list">
-                    {% if product_list %}
-                        {% for product in product_list %}
+                    {% if products %}
+                        {% for product in products %}
                             <div class="product-items">
                                 <div class="sale-info">
                                     <span class="new">New</span>
@@ -65,159 +65,6 @@
                         {% endfor %}
                     {% endif %}
 {#					<div class="product-items">#}
-{#						<div class="sale-info">#}
-{#							<span class="new">New</span>#}
-{#		           			<span class="sale">Sale</span>#}
-{#						</div>#}
-{#						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}"  /></a>#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>#}
-{#		           	#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="clear-fix"></div>#}
-{##}
-{#					<div class="product-items">#}
-{#						<div class="sale-info">#}
-{#							<span class="new">New</span>#}
-{#		           			<span class="sale">Sale</span>#}
-{#						</div>#}
-{#						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}" /></a>#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>#}
-{#		           	#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="clear-fix"></div>#}
-{##}
-{#					<div class="product-items">#}
-{#						<div class="sale-info">#}
-{#							<span class="new">New</span>#}
-{#		           			<span class="sale">Sale</span>#}
-{#						</div>#}
-{#						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}" /></a>#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>#}
-{#		           	#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="clear-fix"></div>#}
-{##}
-{#					<div class="product-items">#}
-{#						<div class="sale-info">#}
-{#							<span class="new">New</span>#}
-{#		           			<span class="sale">Sale</span>#}
-{#						</div>#}
-{#						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}" /></a>#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>#}
-{#		           	#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
-{#						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>#}
-{#		           		#}
-{#		           		<div class="product-info">#}
-{#		           			<p class="name-product">Tên sản phẩm</p>#}
-{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
-{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
-{#		           		</div>#}
-{#					</div>#}
-{#					<div class="product-items">#}
 {#						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>#}
 {#		           		#}
 {#		           		<div class="product-info">#}
@@ -228,7 +75,18 @@
 {#					</div>#}
 {#					<div class="clear-fix"></div>#}
 
-					<div class="paging"><a href="#" class="selected">1</a><a href="#">2</a><a href="#">3</a><a href="#">&gt;</a></div>	
+					<div class="paging">
+                        {% for i in products.paginator.num_pages|get_range %}
+                            {% if products.number == i %}
+                                <a href="javascript:void(0)" class="selected">{{ i }}</a>
+                            {% else %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                            {% if forloop.last %}
+                            {% endif %}
+                        {% endfor %}
+{#                        <a href="#" class="selected">1</a><a href="#">2</a><a href="#">3</a><a href="#">&gt;</a>#}
+                    </div>
 				</div>
 			</div>
 		</div>	
