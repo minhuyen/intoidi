@@ -64,13 +64,19 @@
                             <div class="product-items">
                                 <div class="sale-info">
                                     <span class="new">New</span>
-		           			        <span class="sale">Sale</span>
+                                    {% if product.price != product.promotion_price %}
+                                        <span class="sale">Sale</span>
+                                    {% endif %}
                                 </div>
                                 <a href="#"><img u="image" src="{{ MEDIA_URL }}{{ product_image_list|get_at_index:forloop.counter0 }}"  /></a>
                                 <div class="product-info">
                                     <p class="name-product">{{ product.name }}</p>
                                     <p>Đăng bởi: </p> <span class="user-post">{{ product.user }}</span>
-                                    <p>Giá: </p> <span class="price">{{ product.promotion_price }}₫</span> <span class="price-old">{{ product.price }}₫</span>
+                                    {% if product.price != product.promotion_price %}
+                                        <p>Giá: </p> <span class="price">{{ product.promotion_price }}₫</span> <span class="price-old">{{ product.price }}₫</span>
+                                    {% else %}
+                                        <p>Giá: </p> <span class="price">{{ product.price }}₫</span>
+                                    {% endif %}
                                 </div>
                             </div>
                         {% endfor %}
