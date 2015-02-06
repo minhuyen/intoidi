@@ -30,6 +30,11 @@ class Product(models.Model):
     def __unicode__(self):
         return self.name
 
+class ProductsPage(Page):
+    class Meta:
+        verbose_name = _("Products Page")
+        verbose_name_plural = _("Products Page")
+
 
 class ProductImage(models.Model):
     image = FileField(verbose_name=_("Image Product"), upload_to=upload_to("product.images.file", "production"))
