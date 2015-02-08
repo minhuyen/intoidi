@@ -5,7 +5,7 @@ from mezzanine.pages.admin import PageAdmin
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'user', 'price', 'promotion_price')
+    list_display = ('name', 'user', 'unit_price', 'sale_price',)
 
 
 class ProductImageAdmin(admin.ModelAdmin):

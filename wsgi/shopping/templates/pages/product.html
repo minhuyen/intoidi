@@ -73,9 +73,9 @@
                                     <p class="name-product">{{ product.name }}</p>
                                     <p>Đăng bởi: </p> <span class="user-post">{{ product.user }}</span>
                                     {% if product.price != product.promotion_price %}
-                                        <p>Giá: </p> <span class="price">{{ product.promotion_price }}₫</span> <span class="price-old">{{ product.price }}₫</span>
+                                        <p>Giá: </p> <span class="price">{{ product.sale_price }}₫</span> <span class="price-old">{{ product.unit_price }}₫</span>
                                     {% else %}
-                                        <p>Giá: </p> <span class="price">{{ product.price }}₫</span>
+                                        <p>Giá: </p> <span class="price">{{ product.unit_price }}₫</span>
                                     {% endif %}
                                 </div>
                             </div>

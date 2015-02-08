@@ -10,4 +10,7 @@ def get_at_index(list, index):
 
 @register.filter
 def get_range(value):
-    return [i + 1 for i in range(value)]
+    if value:
+        return [i + 1 for i in range(value)]
+    else:
+        return []

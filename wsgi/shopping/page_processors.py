@@ -6,8 +6,6 @@ from wsgi.shopping.models import HomePage, ProductsPage, Product, ProductImage, 
 @processor_for(ProductsPage)
 def products_processor(request, page):
     product_image_list = []
-
-
     product_list = Product.objects.all().order_by("updated_date").reverse()
     paginator = Paginator(product_list, 4)
 
