@@ -1,218 +1,109 @@
 {% extends "pages/page.html" %}
-{% load mezzanine_tags keyword_tags staticfiles pages_tags%}
+{% load mezzanine_tags keyword_tags staticfiles pages_tags shopping_filters %}
 {% block all_content %}
 <!-- Content -->
   	<div class="content">
 		<div class="product">
 			<div class="product-menu">
 				<h4>Thể Loại 2</h4>
-				<ul>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in trơn</a></li>
-					<li><a href="#">Áo thun trơn wash</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-				</ul>
+                {% if categories %}
+                    {% for category in categories %}
+                        {% if forloop.first %}
+                            <ul>
+                        {% endif %}
+                                <li><a href="#">{{ category.name }}</a></li>
+                        {% if forloop.last %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
 				<h4>Thể Loại 2</h4>
-				<ul>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in trơn</a></li>
-					<li><a href="#">Áo thun trơn wash</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-					<li><a href="#">Áo in hình</a></li>
-				</ul>
-				<h4>Thể Kế Của Thành Viên</h4>
+                {% if categories %}
+                    {% for category in categories %}
+                        {% if forloop.first %}
+                            <ul>
+                        {% endif %}
+                                <li><a href="#">{{ category.name }}</a></li>
+                        {% if forloop.last %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+				<h4>Thiết Kế Của Thành Viên</h4>
 				<ul>
 					<li><a href="#">Yêu thích nhất</a></li>
 					<li><a href="#">Hình thiết kế</a></li>							
 				</ul>
 				<h4 class="tit-color">Màu sắc</h4>
-				<div class="list-color">
-					<a href="#" class="cl-brown"></a>
-					<a href="#" class="cl-red"></a>
-					<a href="#" class="cl-orange"></a>
-					<a href="#" class="cl-white"></a>
-					<a href="#" class="cl-purple"></a>
-					<a href="#" class="cl-blue active"></a>
-					<a href="#" class="cl-yellow"></a>
-					<a href="#" class="cl-green"></a>
-					<a href="#" class="cl-green1"></a>
-					<a href="#" class="cl-green2"></a>
-					<a href="#" class="cl-pink"></a>
-				</div>
+                <div class="list-color">
+                    {% if color_list %}
+                        {% for color in color_list %}
+                            <a href="#" style="background: {{ color.name }}"></a>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+{#				<div class="list-color">#}
+{#					<a href="#" class="cl-brown"></a>#}
+{#					<a href="#" class="cl-red"></a>#}
+{#					<a href="#" class="cl-orange"></a>#}
+{#					<a href="#" class="cl-white"></a>#}
+{#					<a href="#" class="cl-purple"></a>#}
+{#					<a href="#" class="cl-blue active"></a>#}
+{#					<a href="#" class="cl-yellow"></a>#}
+{#					<a href="#" class="cl-green"></a>#}
+{#					<a href="#" class="cl-green1"></a>#}
+{#					<a href="#" class="cl-green2"></a>#}
+{#					<a href="#" class="cl-pink"></a>#}
+{#				</div>#}
 			</div>
 			<div class="product-content">
 				<h4>MỚI NHẤT / YÊU THÍCH nhất</h4>
 				<div class="product-list">
-					<div class="product-items">
-						<div class="sale-info">
-							<span class="new">New</span>
-		           			<span class="sale">Sale</span>
-						</div>
-						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}"  /></a>
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>
-		           	
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="clear-fix"></div>
+                    {% if products %}
+                        {% for product in products %}
+                            <div class="product-items">
+                                <div class="sale-info">
+                                    <span class="new">New</span>
+                                    {% if product.price != product.promotion_price %}
+                                        <span class="sale">Sale</span>
+                                    {% endif %}
+                                </div>
+                                <a href="#"><img u="image" src="{{ MEDIA_URL }}{{ product_image_list|get_at_index:forloop.counter0 }}"  /></a>
+                                <div class="product-info">
+                                    <p class="name-product">{{ product.name }}</p>
+                                    <p>Đăng bởi: </p> <span class="user-post">{{ product.user }}</span>
+                                    {% if product.price != product.promotion_price %}
+                                        <p>Giá: </p> <span class="price">{{ product.sale_price }}₫</span> <span class="price-old">{{ product.unit_price }}₫</span>
+                                    {% else %}
+                                        <p>Giá: </p> <span class="price">{{ product.unit_price }}₫</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+{#					<div class="product-items">#}
+{#						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>#}
+{#		           		#}
+{#		           		<div class="product-info">#}
+{#		           			<p class="name-product">Tên sản phẩm</p>#}
+{#			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#			           		<p>Giá: </p> <span class="price">199,000₫</span> #}
+{#		           		</div>#}
+{#					</div>#}
+{#					<div class="clear-fix"></div>#}
 
-					<div class="product-items">
-						<div class="sale-info">
-							<span class="new">New</span>
-		           			<span class="sale">Sale</span>
-						</div>
-						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}" /></a>
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>
-		           	
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="clear-fix"></div>
-
-					<div class="product-items">
-						<div class="sale-info">
-							<span class="new">New</span>
-		           			<span class="sale">Sale</span>
-						</div>
-						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}" /></a>
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>
-		           	
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="clear-fix"></div>
-
-					<div class="product-items">
-						<div class="sale-info">
-							<span class="new">New</span>
-		           			<span class="sale">Sale</span>
-						</div>
-						<a href="#"><img u="image" src="{% static "images/product1.jpg" %}" /></a>
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product2.jpg" %}" /></a>
-		           	
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product3.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="product-items">
-						<a href="#"><img u="image" src="{% static "images/product4.jpg" %}" /></a>
-		           		
-		           		<div class="product-info">
-		           			<p class="name-product">Tên sản phẩm</p>
-			           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
-			           		<p>Giá: </p> <span class="price">199,000₫</span> 
-		           		</div>
-					</div>
-					<div class="clear-fix"></div>
-
-					<div class="paging"><a href="#" class="selected">1</a><a href="#">2</a><a href="#">3</a><a href="#">&gt;</a></div>	
+					<div class="paging">
+                        {% for i in products.paginator.num_pages|get_range %}
+                            {% if products.number == i %}
+                                <a href="javascript:void(0)" class="selected">{{ i }}</a>
+                            {% else %}
+                                <a href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                            {% if forloop.last %}
+                            {% endif %}
+                        {% endfor %}
+{#                        <a href="#" class="selected">1</a><a href="#">2</a><a href="#">3</a><a href="#">&gt;</a>#}
+                    </div>
 				</div>
 			</div>
 		</div>	

@@ -62,7 +62,7 @@ header, section, footer, aside, nav, article, figure {
 	min-width: 1000px;
 	background: url('../images/bg.png')  0px -18px;
 	padding-bottom: 35px;
-	overflow: hidden;
+	float: left;
 	position: relative;
 }
 .shadow {
@@ -74,6 +74,25 @@ header, section, footer, aside, nav, article, figure {
 	z-index: 1;
 	height: 632px;
 	background: url('../images/shadow.png') no-repeat;
+	background-position: center center;
+	background-repeat: no-repeat;
+
+	/* Safari 4-5, Chrome 1-9 */
+	/* Can't specify a percentage size? Laaaaaame. */	
+
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(12% 19%,closest-corner, rgba(255,255,255,0.3) 100px, rgba(255,255,255,0) 690px);
+
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(12% 19%,closest-corner, rgba(255,255,255,0.3) 100px, rgba(255,255,255,0) 690px) ;
+
+	/* IE 10 */
+	background: -ms-radial-gradient(12% 19%,closest-corner, rgba(255,255,255,0.3) 100px, rgba(255,255,255,0) 690px);
+
+	/* Opera couldn't do radial gradients, then at some point they started supporting the -webkit- syntax, how it kinda does but it's kinda broken (doesn't do sizing) */
+}
+.shadow-child {
+	height: 87px;
 }
 .footer {
 	width: 100%;
@@ -81,7 +100,13 @@ header, section, footer, aside, nav, article, figure {
 	padding-top: 15px;
 	background-color: rgb(240, 240, 240);
 }
-.header-items, .content, .footer-content {
+.header-items {
+	width: 1000px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 9;
+}
+.content, .footer-content {
 	width: 1000px;
 	margin: 0 auto;
 	overflow: hidden;
@@ -213,7 +238,7 @@ header, section, footer, aside, nav, article, figure {
 	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 .copyright {
-	display: block;
+	float: right;
 	clear: both;
 	text-align: right;
 	font-size: 13px;
@@ -253,19 +278,13 @@ header, section, footer, aside, nav, article, figure {
 .nav ul li {
 	display: inline-block;
 	color: #fff;
-	margin: 18px 0;
-	border-left: solid 1px #fff;
+	padding: 15px 0;
 	position: relative;
-	height: 14px;
-	line-height: 12px;
-}
-.nav ul li:first-child {
-	border-left: none;
 }
 .nav ul li a {
 	text-transform: capitalize;
 	font-size: 13px;
-	padding: 0 12px;
+	padding: 0 8px;
 	color: #fff;
 }
 .nav ul li a:hover {
@@ -279,7 +298,8 @@ header, section, footer, aside, nav, article, figure {
 }
 .nav ul li ul {
 	position: absolute;
-	top: 23px;
+	top: 40px;
+	left: -30px;
 	display: none;
 	background: #fff;
 	border-radius: 5px;
@@ -291,9 +311,9 @@ header, section, footer, aside, nav, article, figure {
 	background: url('../images/arrow-top.png') no-repeat;
 	position: absolute;
 	top: -9px;
-	left: 40%;
 	width: 17px;
 	height: 10px;
+	left: 40%;
 }
 .nav ul li:hover ul {
 	display: block;
@@ -301,12 +321,9 @@ header, section, footer, aside, nav, article, figure {
 .nav ul li ul li {
 	display: block;
 	white-space:nowrap;
-	padding: 0 10px;
-	margin: 8px 0;
-	border-right: none;
+	padding: 8px 10px;
 	border-bottom: #cacaca 1px dotted;
 }
-
 .nav ul li ul li:last-child {
 	border: none;
 }
@@ -464,7 +481,6 @@ header, section, footer, aside, nav, article, figure {
 	transform: scale(1)!important;
 }
 .slider-content {
-	cursor: move; 
 	position: absolute; 
 	left: 0px; 
 	top: 0px; 
@@ -493,7 +509,7 @@ header, section, footer, aside, nav, article, figure {
 .jssora03l:hover { background: #eb1c24; }
 .jssora03r:hover { background: #eb1c24; }
 .slider-items {
-	z-index: -1;
+	/*z-index: -1;*/
 }
 .slider-items img {
 	border: solid 1px #ccc;
@@ -622,7 +638,7 @@ header, section, footer, aside, nav, article, figure {
 	font-size: 20px;
 	color: #fff;
 	font-weight: normal;
-	margin: -25px 0 0 0;
+	margin: -18px 0 0 0;
 	padding: 20px 0 20px 20px;
 	border-bottom: solid 3px #f7941d;
 	border-radius: 5px 5px 0 0;
@@ -750,6 +766,7 @@ header, section, footer, aside, nav, article, figure {
 	display: block;
 	margin: 25px 0 35px;
 	padding-left: 40px;
+	padding-bottom: 20px;
 	font-family: hel-light;
 	overflow: hidden;
 }
@@ -844,3 +861,65 @@ header, section, footer, aside, nav, article, figure {
 /*------------End Help--------------*/
 
 /*--------------End content---------------*/
+
+.design-detail-info .list-color {
+	float: left;
+	width: 100%;
+	margin-top: 30px;
+}
+.design-detail-info .list-color a {
+	margin-bottom: 12px;
+}
+.list-color a {
+	float: left;
+	width: 24px;
+	height: 24px;
+	margin: 0 10px 15px 0;
+	box-shadow: 0px 0px 5px #999;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+}
+.list-color a.cl-brown {
+	background: #4e4e4e;
+}
+.list-color a.cl-red {
+	background: #e7121a;
+}
+.list-color a.cl-orange {
+	background: #ff9933;
+}
+.list-color a.cl-purple {
+	background: #612974;
+}
+.list-color a.cl-blue {
+	background: #1682c3;
+}
+.list-color a.cl-yellow {
+	background: #fecf29;
+}
+.list-color a.cl-green {
+	background: #3fc099;
+}
+.list-color a.cl-green1 {
+	background: #57c6c2;
+}
+.list-color a.cl-green2 {
+	background: #52b500;
+}
+.list-color a.cl-pink {
+	background: #ef7b87;
+}
+.list-color a.cl-white {
+	background: #fff;
+}
+
+.list-color a.active {
+	border: solid 3px #ffc000;
+	box-shadow: none;
+	position: relative;
+	margin-top: -6px;
+	top: 3px;
+	margin-left: -6px;
+	left: 3px;
+}
