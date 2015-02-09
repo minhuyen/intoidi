@@ -9,6 +9,7 @@ from mezzanine.generic.fields import RatingField
 from mezzanine.pages.models import Page
 from mezzanine.utils.models import upload_to, AdminThumbMixin
 from django.utils.timezone import now
+from django.db.models.signals import m2m_changed
 from decimal import Decimal
 from . import fields
 from . import managers
@@ -18,6 +19,7 @@ from operator import iand, ior
 from django.db.models import Q
 from wsgi import settings
 from mezzanine.core.models import Displayable, RichText, Orderable, SiteRelated
+from django.dispatch import receiver
 
 
 class Priced(models.Model):
@@ -330,7 +332,7 @@ class Discount(models.Model):
     valid_to = models.DateTimeField(_("Valid to"), blank=True, null=True)
 
     def __unicode__(self):
-        self.title
+        return self.title
 
     class Meta:
         abstract = True
@@ -340,6 +342,7 @@ class Discount(models.Model):
         Return the selected products as well as the products in the
         selected categories.
         """
+        print "all_products"
         filters = [category.filters() for category in self.categories.all()]
         filters = reduce(ior, filters + [Q(id__in=self.products.only("id"))])
         return Product.objects.filter(filters).distinct()
@@ -365,6 +368,7 @@ class Sale(Discount):
         Apply sales field value to products and variations according
         to the selected categories and products for the sale.
         """
+
         self._clear()
         if self.active:
             extra_filter = {}
@@ -425,10 +429,54 @@ class Sale(Discount):
         Clears previously applied sale field values from products prior
         to updating the sale, when deactivating it or deleting it.
         """
+
         update = {"sale_id": None, "sale_price": None,
                   "sale_from": None, "sale_to": None}
         for priced_model in (Product, ProductVariation):
             priced_model.objects.filter(sale_id=self.id).update(**update)
+
+@receiver(m2m_changed, sender=Sale.products.through)
+def sale_update_products(sender, instance, action, *args, **kwargs):
+    """
+    Signal for updating products for the sale - needed since the
+    products won't be assigned to the sale when it is first saved.
+    """
+    if action == "post_add":
+        instance.update_products()
+
+
+class DiscountCode(Discount):
+    """
+    A code that can be entered at the checkout process to have a
+    discount applied to the total purchase amount.
+    """
+
+    code = fields.DiscountCodeField(_("Code"), unique=True)
+    min_purchase = fields.MoneyField(_("Minimum total purchase"))
+    free_shipping = models.BooleanField(_("Free shipping"), default=False)
+    uses_remaining = models.IntegerField(_("Uses remaining"), blank=True,
+                                         null=True, help_text=_("If you wish to limit the number of times a "
+                                                                "code may be used, set this value. It will be decremented upon "
+                                                                "each use."))
+
+    objects = managers.DiscountCodeManager()
+
+    def calculate(self, amount):
+        """
+        Calculates the discount for the given amount.
+        """
+        if self.discount_deduct is not None:
+            # Don't apply to amounts that would be negative after
+            # deduction.
+            if self.discount_deduct <= amount:
+                return self.discount_deduct
+        elif self.discount_percent is not None:
+            return amount / Decimal("100") * self.discount_percent
+        return 0
+
+    class Meta:
+        verbose_name = _("Discount code")
+        verbose_name_plural = _("Discount codes")
 
 
 

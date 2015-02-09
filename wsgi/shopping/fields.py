@@ -40,6 +40,7 @@ class MoneyField(DecimalField):
         defaults.update(kwargs)
         super(MoneyField, self).__init__(*args, **defaults)
 
+
 class SKUField(CharField):
     """
     A field for a product SKU. Provide the name and default field size.
@@ -51,11 +52,21 @@ class SKUField(CharField):
         defaults.update(kwargs)
         super(SKUField, self).__init__(*args, **defaults)
 
+
+class DiscountCodeField(CharField):
+    """
+    A field for Discount Codes. Provide the default field size.
+    """
+    def __init__(self, *args, **kwargs):
+        defaults = {"max_length": 20}
+        defaults.update(kwargs)
+        super(DiscountCodeField, self).__init__(*args, **defaults)
+
 # South requires custom fields to be given "rules".
 # See http://south.aeracode.org/docs/customfields.html
 try:
     from south.modelsinspector import add_introspection_rules
-    add_introspection_rules(rules=[((OptionField, MoneyField, SKUField
-                                     ), [], {})], patterns=["shopping\.fields\."])
+    add_introspection_rules(rules=[((OptionField, MoneyField, SKUField,
+                                     DiscountCodeField), [], {})], patterns=["shopping\.fields\."])
 except ImportError:
     pass

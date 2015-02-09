@@ -2,6 +2,7 @@ __author__ = 'dominhuyen'
 from django.db.models import Manager, Q
 from django.utils.datastructures import SortedDict
 from collections import defaultdict
+from django.utils.timezone import now
 
 
 class ProductVariationManager(Manager):
@@ -92,3 +93,31 @@ class ProductOptionManager(Manager):
         for option in self.all():
             options["option%s" % option.type].append(option.name)
         return options
+
+
+class DiscountCodeManager(Manager):
+
+    def active(self, *args, **kwargs):
+        """
+        Items flagged as active and in valid date range if date(s) are
+        specified.
+        """
+        n = now()
+        valid_from = Q(valid_from__isnull=True) | Q(valid_from__lte=n)
+        valid_to = Q(valid_to__isnull=True) | Q(valid_to__gte=n)
+        valid = self.filter(valid_from, valid_to, active=True)
+        return valid.exclude(uses_remaining=0)
+
+    def get_valid(self, code, cart):
+        """
+        Items flagged as active and within date range as well checking
+        that the given cart contains items that the code is valid for.
+        """
+        total_price_valid = (Q(min_purchase__isnull=True) |
+                             Q(min_purchase__lte=cart.total_price()))
+        discount = self.active().get(total_price_valid, code=code)
+        products = discount.all_products()
+        if products.count() > 0:
+            if products.filter(variations__sku__in=cart.skus()).count() == 0:
+                raise self.model.DoesNotExist
+        return discount

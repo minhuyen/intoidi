@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import HomePage, ProductsPage, Product, ProductImage, Category, ProductOption, Sale, ProductVariation
+from .models import HomePage, ProductsPage, Product, ProductImage, Category, ProductOption, Sale, ProductVariation, DiscountCode
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
 from django.db.models import ImageField
@@ -96,9 +96,9 @@ else:
 
 class ProductAdmin(DisplayableAdmin):
 
-    # class Media:
-    #     js = ("cartridge/js/admin/product_variations.js",)
-    #     css = {"all": ("cartridge/css/admin/product.css",)}
+    class Media:
+        js = ("js/admin/product_variations.js",)
+        css = {"all": ("css/admin/product.css",)}
 
     list_display = product_list_display
     list_display_links = ("admin_thumb", "title")
@@ -202,9 +202,31 @@ class SaleAdmin(admin.ModelAdmin):
         (_("Sale period"), {"fields": (("valid_from", "valid_to"),)}),
     )
 
+
+class DiscountCodeAdmin(admin.ModelAdmin):
+    list_display = ("title", "active", "code", "discount_deduct",
+                    "discount_percent", "min_purchase", "free_shipping", "valid_from",
+                    "valid_to")
+    list_editable = ("active", "code", "discount_deduct", "discount_percent",
+                     "min_purchase", "free_shipping", "valid_from", "valid_to")
+    filter_horizontal = ("categories", "products")
+    formfield_overrides = {MoneyField: {"widget": MoneyWidget}}
+    form = DiscountAdminForm
+    fieldsets = (
+        (None, {"fields": ("title", "active", "code")}),
+        (_("Apply to product and/or products in categories"),
+         {"fields": ("products", "categories")}),
+        (_("Reduce unit price by"),
+         {"fields": (("discount_deduct", "discount_percent"),)}),
+        (None, {"fields": (("min_purchase", "free_shipping"),)}),
+        (_("Valid for"),
+         {"fields": (("valid_from", "valid_to", "uses_remaining"),)}),
+    )
+
 admin.site.register(HomePage, PageAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Sale, SaleAdmin)
 admin.site.register(ProductsPage, PageAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(ProductOption, ProductOptionAdmin)
+admin.site.register(DiscountCode, DiscountCodeAdmin)
