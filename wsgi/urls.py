@@ -87,6 +87,8 @@ urlpatterns += patterns('',
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
 
+    url(r'^shop/', include('shopping.urls', namespace="shopping")),
+
 )
 
 # Adds ``STATIC_URL`` to the context of error pages, so that error
