@@ -64,15 +64,15 @@
                             <div class="product-items">
                                 <div class="sale-info">
                                     <span class="new">New</span>
-                                    {% if product.price != product.promotion_price %}
+                                    {% if product.unit_price != product.sale_price %}
                                         <span class="sale">Sale</span>
                                     {% endif %}
                                 </div>
-                                <a href="#"><img u="image" src="{{ MEDIA_URL }}{{ product_image_list|get_at_index:forloop.counter0 }}"  /></a>
+                                <a href="{% url 'shopping:detail' product.id %}"><img u="image" src="{{ MEDIA_URL }}{{ product_image_list|get_at_index:forloop.counter0 }}"  /></a>
                                 <div class="product-info">
-                                    <p class="name-product">{{ product.name }}</p>
+                                    <p class="name-product">{{ product.title }}</p>
                                     <p>Đăng bởi: </p> <span class="user-post">{{ product.user }}</span>
-                                    {% if product.price != product.promotion_price %}
+                                    {% if product.unit_price != product.sale_price %}
                                         <p>Giá: </p> <span class="price">{{ product.sale_price }}₫</span> <span class="price-old">{{ product.unit_price }}₫</span>
                                     {% else %}
                                         <p>Giá: </p> <span class="price">{{ product.unit_price }}₫</span>
