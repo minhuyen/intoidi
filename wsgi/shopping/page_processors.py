@@ -18,8 +18,8 @@ def products_processor(request, page):
         products = paginator.page(paginator.num_pages)
 
     for product in products:
-        productImage = ProductImage.objects.get(product_id=product.id)
-        product_image_list.append(productImage.image)
+        productImage = ProductImage.objects.filter(product_id=product.id)
+        product_image_list.append(productImage[0].image)
 
     categories = Category.objects.all()
     color_list = ProductOption.objects.filter(type=2)

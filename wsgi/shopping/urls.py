@@ -9,4 +9,5 @@ _slash = "/" if settings.APPEND_SLASH else ""
 
 urlpatterns = patterns("shopping.views",
                        url("^product/(?P<slug>.*)%s$" % _slash, views.product, name="shop_product"),
+                       url(r'^(?P<product_id>\d{1,2})/$', views.productDetail, name="detail"),
                        )
