@@ -181,7 +181,13 @@ class ProductAdmin(DisplayableAdmin):
 
 
 class ProductOptionAdmin(admin.ModelAdmin):
-    list_display = ('type', 'name')
+    ordering = ("type", "name")
+    list_display = ("type", "name")
+    list_display_links = ("type",)
+    list_editable = ("name",)
+    list_filter = ("type",)
+    search_fields = ("type", "name")
+    radio_fields = {"type": admin.HORIZONTAL}
 
 
 class SaleAdmin(admin.ModelAdmin):

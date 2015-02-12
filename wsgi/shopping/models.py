@@ -185,7 +185,7 @@ class ProductOption(models.Model):
     objects = managers.ProductOptionManager()
 
     def __unicode__(self):
-        return self.name
+        return "%s: %s" % (self.get_type_display(), self.name)
 
 
 class ProductVariationMetaclass(ModelBase):
