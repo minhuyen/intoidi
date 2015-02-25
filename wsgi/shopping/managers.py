@@ -121,3 +121,17 @@ class DiscountCodeManager(Manager):
             if products.filter(variations__sku__in=cart.skus()).count() == 0:
                 raise self.model.DoesNotExist
         return discount
+
+
+class SaleManager(Manager):
+    def get_active(self, *args, **kwargs):
+        """
+        Items fladgged as active and within date range as well checking
+        """
+        n = now()
+        valid_from = Q(valid_from__isnull=True) | Q(valid_from__lte=n)
+        valid_to = Q(valid_to__isnull=True) | Q(valid_to__gte=n)
+        valid = self.filter(valid_from, valid_to, active=True)
+        return valid
+
+
