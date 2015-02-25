@@ -15,12 +15,17 @@ source $OPENSHIFT_HOMEDIR/python/virtenv/bin/activate
 
 # Always collect static files, static dir is erased on push and we might have
 # something new.
+
 echo "Executing 'python $OPENSHIFT_REPO_DIR/wsgi/manage.py collectstatic --noinput'"
+
 python "$OPENSHIFT_REPO_DIR"wsgi/manage.py collectstatic --noinput
 
 #python "$OPENSHIFT_REPO_DIR"wsgi/manage.py createdb --noinput --settings=settings.production
 
 #python "$OPENSHIFT_REPO_DIR"wsgi/manage.py migrate --noinput --settings=settings.production
+
+
+python "$OPENSHIFT_REPO_DIR"wsgi/manage.py migrate --noinput
 
 
 # Make the web root files (favicon.ico, robots.txt) available 

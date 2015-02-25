@@ -64,6 +64,7 @@ urlpatterns += patterns('',
     # ``mezzanine.urls`` INCLUDES A *CATCH ALL* PATTERN
     # FOR PAGES, SO URLPATTERNS ADDED BELOW ``mezzanine.urls``
     # WILL NEVER BE MATCHED!
+    url(r'^detail/', include('shopping.urls', namespace="shopping")),
 
     # If you'd like more granular control over the patterns in
     # ``mezzanine.urls``, go right ahead and take the parts you want
@@ -86,6 +87,8 @@ urlpatterns += patterns('',
     # need to use the ``SITE_PREFIX`` setting as well.
 
     # ("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls"))
+
+    url(r'^shop/', include('shopping.urls', namespace="shopping")),
 
 )
 
