@@ -151,6 +151,10 @@ class Product(Displayable, Priced, RichText, AdminThumbMixin):
             self.image = default.image.image.name
         self.save()
 
+    def show_discount_percent(self):
+        result = (self.sale_price/self.unit_price)*100
+        return result
+
 
 class ProductsPage(Page):
     class Meta:
