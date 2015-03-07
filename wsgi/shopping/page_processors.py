@@ -29,18 +29,11 @@ def products_processor(request, page):
 
 @processor_for(HomePage)
 def deal_of_week(request, page):
-    n = now()
     deals = Sale.objects.get_active()
     list_products = []
     if deals:
         for deal in deals:
             list_products.extend(deal.all_products())
     context = {"deals": list_products}
-    print "context: ",context
+    print "context: ", context
     return context
-
-
-
-
-
-
