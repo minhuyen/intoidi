@@ -148,7 +148,7 @@
 									</div>
 									<a href="#" class="btn-addcart">Add to cart</a>
 									<div class="favorite">
-										<span class="like">27 người thích</span>
+										<span class="like">{{ product.like }} người thích</span>
                                         <input type="hidden" value="{{ product.sale_to|date:"Y" }}" id="product-sale-to-year">
                                         <input type="hidden" value="{{ product.sale_to|date:"n" }}" id="product-sale-to-month">
                                         <input type="hidden" value="{{ product.sale_to|date:"d" }}" id="product-sale-to-day">

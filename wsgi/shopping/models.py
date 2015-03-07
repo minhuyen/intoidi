@@ -152,7 +152,7 @@ class Product(Displayable, Priced, RichText, AdminThumbMixin):
         self.save()
 
     def show_discount_percent(self):
-        result = (self.sale_price/self.unit_price)*100
+        result = 100 - int((self.sale_price/self.unit_price)*100)
         return result
 
 
