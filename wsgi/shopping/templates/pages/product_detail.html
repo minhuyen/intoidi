@@ -167,30 +167,16 @@
 							<div class="product-info-viewed">
 							<h4>SẢN PHẨM ĐÃ XEM</h4>
 							<div class="list-viewed">
-								<div class="list-viewed-items">
-									<a href="#"><img src="{% static "images/view1.png" %}" /></a>
-									<p>Tên sản phẩm</p>
-									<p>Đăng bởi : <span>member</span></p>
-									<p>Giá: <span class="price">199,000₫</span></p>
-								</div>
-								<div class="list-viewed-items">
-									<a href="#"><img src="{% static "images/view2.png" %}" /></a>
-									<p>Tên sản phẩm</p>
-									<p>Đăng bởi : <span>member</span></p>
-									<p>Giá: <span class="price">199,000₫</span></p>
-								</div>
-								<div class="list-viewed-items">
-									<a href="#"><img src="{% static "images/view3.png" %}" /></a>
-									<p>Tên sản phẩm</p>
-									<p>Đăng bởi : <span>member</span></p>
-									<p>Giá: <span class="price">199,000₫</span></p>
-								</div>
-								<div class="list-viewed-items">
-									<a href="#"><img src="{% static "images/view4.png" %}" /></a>
-									<p>Tên sản phẩm</p>
-									<p>Đăng bởi : <span>member</span></p>
-									<p>Giá: <span class="price">199,000₫</span></p>
-								</div>
+                                {% if viewed_product_list %}
+                                    {% for product in viewed_product_list %}
+                                    <div class="list-viewed-items">
+									    <a href="#"><img src="{{ MEDIA_URL }}{{ product.image }}" /></a>
+									    <p>{{ product.title }}</p>
+									    <p>Đăng bởi : <span>{{ product.user }}</span></p>
+									    <p>Giá: <span class="price">{{ product.sale_price }}</span></p>
+								    </div>
+                                    {% endfor %}
+                                {% endif %}
 							</div>
 							<div class="hot-deal" id="hotdeal" style="position: relative; top: 0px; left: 0px; width: 261px; height: 235px;">
 								<span class="hot-tit">HOT DEAL</span>
