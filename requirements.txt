@@ -38,7 +38,7 @@ xlrd==0.9.3
 xlwt==0.7.5
 django-user-accounts
 django-simple-captcha
-pinax-theme-bootstrap==4.0
+pinax-theme-bootstrap
 django-bootstrap-form
 django-annoying>=0.7.6
 django-pure-pagination>=0.2.1

@@ -238,6 +238,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 INSTALLED_APPS = (
     #project
     "shopping",
+    "profiles",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

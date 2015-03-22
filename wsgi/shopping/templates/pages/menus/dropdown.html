@@ -13,7 +13,7 @@
                     {% endif %}
                     {% if page.in_menu %}
                         <li class="{% if page.has_children_in_menu %}dropdown{% endif %}
-               {% if page.is_current_or_ascendant %}active{% endif %}"
+                            {% if page.is_current_or_ascendant %}active{% endif %}"
                             id="{{ page.html_id }}">
                              <a href="{{ page.get_absolute_url }}"
                                     {% if page.has_children_in_menu %}
@@ -26,6 +26,9 @@
                         </li>
                     {% endif %}
                 {% endfor %}
+                <li>
+                    <a href="{% url "account_login" %}">{% trans "Log in" %}</a>
+                </li>
             </ul>
 
         {% else %}
