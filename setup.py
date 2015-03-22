@@ -10,9 +10,9 @@ setup(
     author_email='',
     url='https://bitbucket.org/radeksvarz/mezzanineopenshift',
     install_requires=[
-        'Django==1.6.6',             # 
+        'Django==1.6.7’,             # 
         'psycopg2==2.5.3',           # important as Openshift default is the older 2.0.4 version throwing errors
-        'mezzanine==3.1.9',          # Mezzanine itself
+        'mezzanine==3.1.10’,          # Mezzanine itself
         'django_compressor==1.4',    # Compresses linked, inline Javascript, CSS in a template into cacheable static files
         'South==1.0',                # Intelligent database migrations library for the Django web framework.
 

@@ -236,6 +236,7 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, "templates"),)
 ################
 
 INSTALLED_APPS = (
+    #project
     "shopping",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -256,6 +257,19 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
+
+    # theme
+
+
+    # external
+    'pybb',
+    #'pytils',
+    'sorl.thumbnail',
+    'pure_pagination',
+    'account',
+    'pinax_theme_bootstrap',
+    'bootstrapform',
+    'captcha',
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -272,6 +286,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.tz",
     "mezzanine.conf.context_processors.settings",
     "mezzanine.pages.context_processors.page",
+    'pybb.context_processors.processor',
+    "account.context_processors.account",
 )
 
 # List of middleware classes to use. Order is important; in the request phase,
@@ -295,6 +311,9 @@ MIDDLEWARE_CLASSES = (
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    'pybb.middleware.PybbMiddleware',
+    "account.middleware.LocaleMiddleware",
+    "account.middleware.TimezoneMiddleware",
 )
 
 # Store these package names here as they may change in the future since

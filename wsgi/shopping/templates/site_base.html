@@ -1,0 +1,9 @@
+{% extends "pages/page.html" %}
+{% load mezzanine_tags keyword_tags staticfiles pages_tags shopping_filters %}
+{% block all_content %}
+This is forum
+    <div id="content">
+        {% block content %}
+        {% endblock content %}
+    </div>
+{% endblock %}
