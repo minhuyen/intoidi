@@ -1,4 +1,6 @@
 from django.contrib import admin
+from pybb.admin import ForumAdmin
+from pybb.models import Forum
 from .models import HomePage, ProductsPage, Product, ProductImage, Category, ProductOption, Sale, ProductVariation, DiscountCode
 from mezzanine.pages.admin import PageAdmin
 from mezzanine.core.admin import DisplayableAdmin, TabularDynamicInlineAdmin
@@ -7,6 +9,7 @@ from .fields import MoneyField
 from .forms import (ImageWidget, MoneyWidget, DiscountAdminForm,
                     ProductVariationAdminForm, ProductVariationAdminFormset, ProductAdminForm)
 from django.utils.translation import ugettext_lazy as _
+from shopping.models import ExtendForum
 from wsgi import settings
 from copy import deepcopy
 
@@ -229,6 +232,15 @@ class DiscountCodeAdmin(admin.ModelAdmin):
          {"fields": (("valid_from", "valid_to", "uses_remaining"),)}),
     )
 
+
+class ExtendForumInline(admin.TabularInline):
+    model = ExtendForum
+
+
+class MyForumAdmin(ForumAdmin):
+    inlines = ForumAdmin.inlines + [ExtendForumInline]
+
+
 admin.site.register(HomePage, PageAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Sale, SaleAdmin)
@@ -236,3 +248,6 @@ admin.site.register(ProductsPage, PageAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(ProductOption, ProductOptionAdmin)
 admin.site.register(DiscountCode, DiscountCodeAdmin)
+
+admin.site.unregister(Forum)
+admin.site.register(Forum, MyForumAdmin)

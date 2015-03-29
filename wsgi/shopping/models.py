@@ -17,6 +17,7 @@ from future.utils import with_metaclass
 from django.db.models.base import ModelBase
 from operator import iand, ior
 from django.db.models import Q
+from pybb.models import Forum
 from wsgi import settings
 from mezzanine.core.models import Displayable, RichText, Orderable, SiteRelated
 from django.dispatch import receiver
@@ -549,6 +550,13 @@ class DiscountCode(Discount):
     class Meta:
         verbose_name = _("Discount code")
         verbose_name_plural = _("Discount codes")
+
+
+class ExtendForum(models.Model):
+    forum = models.OneToOneField(Forum)
+    image = FileField(verbose_name=_("Image"),
+                      upload_to=upload_to("pybb.forum.image", "image"),
+                      format="Image", max_length=255, null=True, blank=True)
 
 
 
