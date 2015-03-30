@@ -1,7 +1,11 @@
 {% extends "pages/page.html" %}
 {% load mezzanine_tags keyword_tags staticfiles pages_tags shopping_filters %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/agile_carousel.css" %}">
+    <link rel="stylesheet" href="{% static "css/forum.css" %}">
+{% endblock %}
 {% block all_content %}
-This is forum
     <div id="content">
         {% block content %}
         {% endblock content %}

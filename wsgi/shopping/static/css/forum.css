@@ -1,0 +1,143 @@
+#content {
+    clear: both;
+    max-width: 1000px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+#content .category,
+#content .forum {
+    /*border: solid #efefef;*/
+    margin-bottom: 20px;
+    /*border-width: 1px 1px 0 1px;*/
+}
+
+#content .category .categoryTitle,
+#content .forum .forumTitle {
+    padding: 10px 0 10px 10px;
+    margin: 0;
+    border-bottom: 1px solid #efefef;
+    background-color: #efefef;
+    color: #1f1f1f;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.category-table,
+.child-forums-table,
+.table.topic-list{
+    width: 100%;
+    border-spacing: 0;
+    border: solid #efefef;
+    border-width: 1px 1px 0 1px;
+    margin-bottom: 20px;
+}
+
+thead {
+    margin: 0;
+    border-bottom: 1px solid #efefef;
+    background-color: #efefef;
+}
+
+thead tr th {
+    padding: 10px 0 10px 10px;
+    color: #1f1f1f;
+    font-weight: normal;
+    /*display: block;*/
+    /*text-transform: uppercase;*/
+}
+
+tr td {
+    padding: 10px 0 10px 10px;
+}
+
+tr th.topic-name,
+tr td.topic-name {
+    width: 59%;
+    text-align: left;
+    float: left;
+}
+
+tr th.topic-post-count,
+tr td.topic-post-count {
+    width: 9%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr th.topic-view-count,
+tr td.topic-view-count {
+    width: 9%;
+    text-align: center;
+}
+
+tr th.topic-last-post,
+tr td.topic-last-post {
+    width: 18%;
+    text-align: right;
+    padding: 10px 10px 10px 0;
+}
+
+.forum-row {
+    padding: 10px;
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid #efefef;
+}
+
+.forum-row td {
+    width: 32%;
+    float: left;
+    display: block;
+    padding-left: 10px;
+}
+
+.forum-row .forumName {
+    margin-bottom: 10px;
+}
+
+.forum-row .forumName a {
+    color: #093974;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.forum-row .topicLabel {
+    color: #C5C5C5;
+    font-size: 15px;
+}
+
+.forum-row .topicNumber {
+    font-size: 17px;
+}
+
+
+.forum-row .topicCount {
+    float: left;
+    margin-right: 5px;
+}
+
+/*===Topic===*/
+.topic-row {
+    border-bottom: 1px solid #efefef;
+    display: table;
+    width: 100%;
+}
+.topic-name .topicTitle,
+.topic-last-post .lastPostByUser {
+    color: #093974;
+    font-weight: bold;
+}
+
+.topic-name .createdInfo,
+.topic-last-post .lastPostByUpdated {
+    color: #C5C5C5;
+    font-size: 15px;
+}
+
+.topic-name .avatar {
+    float: left;
+    margin-right: 10px;
+}
+
+

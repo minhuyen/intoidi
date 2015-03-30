@@ -1,0 +1,62 @@
+{% extends 'pybb/base.html' %}
+
+{% load url from future %}
+
+{% load pybb_tags i18n %}
+
+{% block title %}{{ topic }}{% endblock %}
+
+{% block extra_head %}
+    {{ block.super }}
+    {{ form.media.css }}
+{% endblock %}
+{% block extra_script %}
+    {{ block.super }}
+    {{ form.media.js }}
+    <script type="text/javascript" src="{{ STATIC_URL }}pybb/js/jquery.formset.min.js"></script>
+{% endblock %}
+
+{% block breadcrumb %}
+    {% with object=topic %}
+        {% include "pybb/breadcrumb.html" %}
+    {% endwith %}
+{% endblock %}
+
+{% block content %}
+    <div class="topic">
+        <h1>{{ topic.name }}</h1>
+        {% with _('Posts') as label %}
+            {% include "pybb/pagination.html" %}
+        {% endwith %}
+
+        {% if topic.poll_type %}
+            {% include 'pybb/poll.html' %}
+        {% endif %}
+
+        <div class="posts">
+            {% if first_post %}{% ifnotequal first_post post_list.0 %}
+                {% with first_post as post %}
+                    <li class="first_post">{% include "pybb/post_template.html" %}</li>
+                {% endwith %}
+            {% endifnotequal %}{% endif %}
+            {% for post in post_list %}
+                {% cycle 'odd' 'even' as rowcolors silent %}
+                {% include "pybb/post_template.html" %}
+            {% endfor %}
+        </div>
+        <div>&nbsp;</div>
+        {% with _('Posts') as label %}
+            {% include "pybb/pagination.html" %}
+        {% endwith %}
+
+
+        {% if user|pybb_may_create_post:topic %}
+            {% include "pybb/post_form.html" %}
+        {% else %}
+            {% if not user.is_authenticated %}
+                {% include 'pybb/_need_to_login_message.html' %}
+            {% endif %}
+        {% endif %}
+
+    </div>
+{% endblock %}
