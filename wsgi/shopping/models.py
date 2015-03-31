@@ -17,9 +17,11 @@ from future.utils import with_metaclass
 from django.db.models.base import ModelBase
 from operator import iand, ior
 from django.db.models import Q
+from pybb.models import Forum
 from wsgi import settings
 from mezzanine.core.models import Displayable, RichText, Orderable, SiteRelated
 from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
 
 class Priced(models.Model):
@@ -95,7 +97,7 @@ class Product(Displayable, Priced, RichText, AdminThumbMixin):
     """
 
     #name = models.CharField(max_length=255, null=False, blank=False)
-    user = models.ForeignKey(User, null=False, verbose_name=_("Member"))
+    user = models.ForeignKey(get_user_model(), null=False, verbose_name=_("Member"))
     manufacturer = models.CharField(max_length=255, verbose_name=_("Manufacturer"), blank=True, null=True)
     review_point = models.IntegerField(default=0, verbose_name=_("Review point"))
     available = models.BooleanField(_("Available for purchase"), default=False)
@@ -150,6 +152,10 @@ class Product(Displayable, Priced, RichText, AdminThumbMixin):
         if default.image:
             self.image = default.image.image.name
         self.save()
+
+    def show_discount_percent(self):
+        result = 100 - int((self.sale_price/self.unit_price)*100)
+        return result
 
 
 class ProductsPage(Page):
@@ -545,6 +551,13 @@ class DiscountCode(Discount):
     class Meta:
         verbose_name = _("Discount code")
         verbose_name_plural = _("Discount codes")
+
+
+class ExtendForum(models.Model):
+    forum = models.OneToOneField(Forum)
+    image = FileField(verbose_name=_("Image"),
+                      upload_to=upload_to("pybb.forum.image", "image"),
+                      format="Image", max_length=255, null=True, blank=True)
 
 
 

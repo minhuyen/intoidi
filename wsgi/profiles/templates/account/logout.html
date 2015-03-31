@@ -1,0 +1,21 @@
+{% extends "pages/page.html" %}
+{% load mezzanine_tags keyword_tags staticfiles pages_tags shopping_filters %}
+{% load i18n %}
+{% block all_content %}
+    {% block head_title %}{% trans "Log out" %}{% endblock %}
+    
+    {% block body %}
+        <div class="row">
+            <div class="col-md-5">
+                <form method="POST" action="{% url "account_logout" %}">
+                    <legend>{% trans "Log out" %}</legend>
+                    <fieldset>
+                        {% csrf_token %}
+                        <p>{% trans "Are you sure you want to log out?" %}</p>
+                        <button type="submit" class="btn btn-primary">{% trans "Log out" %}</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock all_content %}

@@ -32,3 +32,8 @@ def get_cookies(request, arg):
 def get_session(request, arg):
     """concatenate arg1 & arg2"""
     return request.session.get(arg, "")
+
+
+@register.filter
+def modulo(num, val):
+    return num % val

@@ -1,0 +1,14 @@
+{% if topic.updated %}
+    {% if topic.post_count > 0 %}
+        <div class="lastPostByUser">
+            {{ topic.last_post.user }}
+        </div>
+        <div class="lastPostByUpdated">
+            {% if topic.last_post.updated %}
+                {{ topic.last_post.updated|timesince }}
+            {% else %}
+                {{ topic.last_post.created|timesince }}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endif %}

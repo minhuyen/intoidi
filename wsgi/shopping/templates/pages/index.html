@@ -107,109 +107,126 @@
 <!-- Content -->
 <div class="content">
     <div class="slider">
-        <h4>Deal of the week </h4>
+        <h4>Deal of the week</h4>
         <div class="product-carousel" id="product-carousel">                        
             <!-- Wrapper for slides -->
             <div u="slides" class="slider-content">
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img5.png" %}"/>
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img2.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img1.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img2.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img4.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img3.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img5.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img4.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img3.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img2.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>
-                <div class="slider-items">
-                    <img u="image" src="{% static "images/img1.png" %}" />
-                    <span class="sale">Save 20%</span>
-                    <div class="product-info">
-                        <p class="name-product">Tên sản phẩm</p>
-                        <p>Đăng bởi: </p> <span class="user-post"> member</span>
-                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
-                    </div>
-                </div>                
+                {% if deals %}
+                    {% for product in deals %}
+                        <div class="slider-items">
+                            <a href="{% url 'shopping:detail' product.id %}">
+                                <img u="image" src="{{ MEDIA_URL }}{{ product.image }}"  />
+                                <span class="sale">Save {{ product.show_discount_percent }}%</span>
+                            </a>
+                            <div class="product-info">
+                                <a href="{% url 'shopping:detail' product.id %}">
+                                    <p class="name-product">{{ product.title }}</p>
+                                </a>
+                                <p>Đăng bởi: </p> <span class="user-post">{{ product.user }}</span>
+                                <p>Giá: </p> <span class="price">{{ product.sale_price }}</span> <span class="price-old">{{ product.unit_price }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img5.png" %}"/>#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img2.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img1.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img2.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img4.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img3.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img5.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img4.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img3.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img2.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="slider-items">#}
+{#                    <img u="image" src="{% static "images/img1.png" %}" />#}
+{#                    <span class="sale">Save 20%</span>#}
+{#                    <div class="product-info">#}
+{#                        <p class="name-product">Tên sản phẩm</p>#}
+{#                        <p>Đăng bởi: </p> <span class="user-post"> member</span>#}
+{#                        <p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>#}
+{#                    </div>#}
+{#                </div>                #}
                 <!-- Arrow Left -->
                 <span u="arrowleft" class="jssora03l" style="width: 34px;height: 34px;top: 95px; 
 left: 2px;">&lt;</span>

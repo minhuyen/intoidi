@@ -20,17 +20,43 @@ from wsgi.shopping.models import Product, ProductImage, ProductVariation
 def productDetail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
+    viewed_product_list = []
     if product:
         views = product.view + 1
         product.view = views
         product.save()
+        if not 'viewedProducts' in request.session or not request.session['viewedProducts']:
+            request.session['viewedProducts'] = [product_id]
+        else:
+            viewedProducts = request.session['viewedProducts']
+            index = 0
+            for id in viewedProducts:
+                if product_id == id:
+                    break
+                if index == len(viewedProducts)-1:
+                    viewedProducts.append(product_id)
+                    break
+                index += 1
+                
+            request.session['viewedProduct'] = viewedProducts
+            index = 0
+            for id in reversed(viewedProducts):
+                product = Product.objects.get(id=id)
+                viewed_product_list.append(product)
+                index += 1
+                if index == 4:
+                    break
+
+
     product_image_list = ProductImage.objects.filter(product_id=product_id)
     product_option_list = ProductVariation.objects.filter(product_id=product_id)
 
 
     return render(request, "pages/product_detail.html", {"product": product,
                   "product_image_list": product_image_list,
-                  "product_option_list": product_option_list
+                  "product_option_list": product_option_list,
+                  # "viewedProducts": viewedProducts
+                  "viewed_product_list": viewed_product_list
     })
 
 
