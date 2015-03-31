@@ -9,6 +9,7 @@ from .fields import MoneyField
 from .forms import (ImageWidget, MoneyWidget, DiscountAdminForm,
                     ProductVariationAdminForm, ProductVariationAdminFormset, ProductAdminForm)
 from django.utils.translation import ugettext_lazy as _
+from profiles.models import CustomUser
 from shopping.models import ExtendForum
 from wsgi import settings
 from copy import deepcopy
@@ -251,3 +252,4 @@ admin.site.register(DiscountCode, DiscountCodeAdmin)
 
 admin.site.unregister(Forum)
 admin.site.register(Forum, MyForumAdmin)
+admin.site.register(CustomUser)

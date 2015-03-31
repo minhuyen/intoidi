@@ -40,3 +40,6 @@ SHOP_USE_UPSELL_PRODUCTS = True
 
 PYBB_TEMPLATE = "site_base.html"
 
+PYBB_PROFILE_RELATED_NAME = "pybb_customprofile"
+AUTH_USER_MODEL = "profiles.CustomUser"
+

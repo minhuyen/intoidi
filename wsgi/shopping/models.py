@@ -21,6 +21,7 @@ from pybb.models import Forum
 from wsgi import settings
 from mezzanine.core.models import Displayable, RichText, Orderable, SiteRelated
 from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
 
 class Priced(models.Model):
@@ -96,7 +97,7 @@ class Product(Displayable, Priced, RichText, AdminThumbMixin):
     """
 
     #name = models.CharField(max_length=255, null=False, blank=False)
-    user = models.ForeignKey(User, null=False, verbose_name=_("Member"))
+    user = models.ForeignKey(get_user_model(), null=False, verbose_name=_("Member"))
     manufacturer = models.CharField(max_length=255, verbose_name=_("Manufacturer"), blank=True, null=True)
     review_point = models.IntegerField(default=0, verbose_name=_("Review point"))
     available = models.BooleanField(_("Available for purchase"), default=False)
