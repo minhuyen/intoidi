@@ -24,7 +24,7 @@
 
 {% block content %}
     <div class="topic">
-        <h1>{{ topic.name }}</h1>
+        <div class="topicName">{{ topic.name }}</div>
         {% with _('Posts') as label %}
             {% include "pybb/pagination.html" %}
         {% endwith %}
@@ -34,6 +34,12 @@
         {% endif %}
 
         <div class="posts">
+            <div class="topicInfo">
+                {{ topic }}
+                {{ topic.user }}
+                {{ topic.created | date:"d.m.Y H:i" }}
+            </div>
+            <hr>
             {% if first_post %}{% ifnotequal first_post post_list.0 %}
                 {% with first_post as post %}
                     <li class="first_post">{% include "pybb/post_template.html" %}</li>
@@ -53,9 +59,9 @@
         {% if user|pybb_may_create_post:topic %}
             {% include "pybb/post_form.html" %}
         {% else %}
-            {% if not user.is_authenticated %}
-                {% include 'pybb/_need_to_login_message.html' %}
-            {% endif %}
+{#            {% if not user.is_authenticated %}#}
+{#                {% include 'pybb/_need_to_login_message.html' %}#}
+{#            {% endif %}#}
         {% endif %}
 
     </div>

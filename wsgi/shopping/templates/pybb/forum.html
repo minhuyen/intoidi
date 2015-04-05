@@ -13,7 +13,13 @@
 
 {% block content %}
     <div class="forum">
-        <h4 class="forumTitle">{{ forum.name }}</h4>
+        <div class="forumTitle">{{ forum.name }}
+            {% if user|pybb_may_create_topic:forum %}
+                <div class="controls">
+                    {% include "pybb/_button_new_topic.html" %}
+                </div>
+            {% endif %}
+        </div>
         {% if forum.headline %}
             <div class="forum-headline alert alert-block">
                 {{ forum.headline|safe }}
@@ -28,10 +34,10 @@
 
         {% include "pybb/pagination.html" %}
 
-        {% if user|pybb_may_create_topic:forum %}
-            <div class="controls">
-                {% include "pybb/_button_new_topic.html" %}
-            </div>
-        {% endif %}
+{#        {% if user|pybb_may_create_topic:forum %}#}
+{#            <div class="controls">#}
+{#                {% include "pybb/_button_new_topic.html" %}#}
+{#            </div>#}
+{#        {% endif %}#}
     </div>
 {% endblock content %}
