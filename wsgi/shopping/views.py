@@ -1,3 +1,4 @@
+from cartridge.shop.models import Product, ProductImage, ProductVariation
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -14,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 def product(request, slug):
     return HttpResponse("Hello, world. You're at the poll index.")
-from wsgi.shopping.models import Product, ProductImage, ProductVariation
+#from wsgi.shopping.models import Product, ProductImage, ProductVariation
 
 
 def productDetail(request, product_id):

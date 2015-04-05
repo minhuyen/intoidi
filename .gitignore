@@ -7,3 +7,5 @@
 .idea
 venv
 .vagrant
+haystack
+*.sql

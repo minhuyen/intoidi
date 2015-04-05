@@ -72,6 +72,9 @@ urlpatterns += patterns('',
     url(r'^accounts/', include('account.urls')),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^forum/', include('pybb.urls', namespace='pybb')),
+    ("^shop/", include("cartridge.shop.urls")),
+    url("^account/orders/$", "cartridge.shop.views.order_history",
+        name="shop_order_history"),
 
     # If you'd like more granular control over the patterns in
     # ``mezzanine.urls``, go right ahead and take the parts you want

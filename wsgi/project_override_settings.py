@@ -43,3 +43,14 @@ PYBB_TEMPLATE = "site_base.html"
 PYBB_PROFILE_RELATED_NAME = "pybb_customprofile"
 AUTH_USER_MODEL = "profiles.CustomUser"
 
+DEBUG = True
+
+EXTRA_MODEL_FIELDS = (
+    (
+        "cartridge.shop.models.Product.user",
+        "ForeignKey",
+        (AUTH_USER_MODEL,),
+        {"blank": True, "null": True},
+    ),
+)
+
