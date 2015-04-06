@@ -9,3 +9,4 @@ venv
 .vagrant
 haystack
 *.sql
+wsgi/static/media
