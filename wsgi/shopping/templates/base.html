@@ -46,7 +46,7 @@
         {% block extra_js %}
             <!-- Latest compiled and minified JavaScript -->
             <script type="text/javascript" src="{% static "js/jquery-1.10.1.min.js" %}"></script>
-            <script type="text/javascript"@i src="{% static "js/jssor.js" %}"></script>
+            <script type="text/javascript" src="{% static "js/jssor.js" %}"></script>
             <script type="text/javascript" src="{% static "js/jssor.slider.min.js" %}"></script>
             <script type="text/javascript" src="{% static "js/resize-home.js"%}"></script>
             <script type="text/javascript" src="{% static "js/resize.js"%}"></script>
@@ -54,9 +54,9 @@
     {% endcompress %}
 
     <!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<script src="{% static "js/respond.min.js" %}"></script>
-<![endif]-->
+        <script src="{% static "js/html5shiv.js" %}"></script>
+        <script src="{% static "js/respond.min.js" %}"></script>
+    <![endif]-->
 
     {% block extra_head %}{% endblock %}
 </head>
