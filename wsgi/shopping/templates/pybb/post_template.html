@@ -9,46 +9,65 @@
 <span class="updated">
 {#    {% pybb_time post.created %}#}
 </span>
-<div id="post-{{ post.id }}">
+<div id="post-{{ post.id }}" class="postElement">
     <div class="avatarContainer">
         {% include "pybb/avatar.html" with user=post.user %}
         <div class="post-author">
-                <a href="{{ post_user_profile.get_absolute_url }}">
-                    <span class="post-username">{{ post_user_profile.get_display_name }}</span>
-                </a>
+            <a href="{{ post_user_profile.get_absolute_url }}">
+                <div class="post-username">{{ post_user_profile.get_display_name }}</div>
+            </a>
+            {% if post.user.is_superuser %}
+                <div class="userRole">{% trans "Admin" %}</div>
+            {% else %}
+                <div class="userRole">{% trans "Member" %}</div>
+            {% endif %}
+        </div>
+        {% if post_user_profile.rank %}
+            <div class='rank'>
+                {% trans "Rank" %}: {{ post_user_profile.rank }}
+                {% if user.is_authenticated and user != post.user %}
+                    <a href='#' class='vote' rel='{{ post_user_profile.get_vote_up_url }}'>+</a>
+                    <a href='#' class='vote' rel='{{ post_user_profile.get_vote_down_url }}'>-</a>
+                {% endif %}
             </div>
-            {% if post_user_profile.rank %}
-                <div class='rank'>
-                    {% trans "Rank" %}: {{ post_user_profile.rank }}
-                    {% if user.is_authenticated and user != post.user %}
-                        <a href='#' class='vote' rel='{{ post_user_profile.get_vote_up_url }}'>+</a>
-                        <a href='#' class='vote' rel='{{ post_user_profile.get_vote_down_url }}'>-</a>
-                    {% endif %}
-                </div>
-            {% endif %}
-            {% if user.is_superuser %}
-                <div class="post-extra-info">{{ post.user_ip }}</div>
-            {% endif %}
-
-            <div class="post-controls">
-                {% if user.is_moderator or post|pybb_posted_by:user %}
-                    <a href="{% url 'pybb:edit_post' pk=post.id %}">{% trans "Edit" %}</a>
-                {% endif %}
-                {% if user.is_moderator %}
-                    <a onclick="pybb_delete_post('{% url 'pybb:delete_post' post.id %}',
-                            'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
-                       href="{% url 'pybb:delete_post' post.id %}">{% trans "Delete" %}</a>
-                    {% if post.on_moderation %}
-                        <a href="{% url 'pybb:moderate_post' pk=post.id %}">{% trans "Approve post" %}</a>
-                    {% endif %}
-                {% endif %}
-
-                {% if perms.pybb.change_post and user.is_staff %}
-                    <a href="{% url 'admin:pybb_post_change' post.id %}">{% trans 'Admin' %}</a>
-                {% endif %}
-
+        {% endif %}
+{#            {% if user.is_superuser %}#}
+{#                <div class="post-extra-info">{{ post.user_ip }}</div>#}
+{#            {% endif %}#}
+        <div class="authorInfo">
+            <div class="dateJoined">
+                <span class="label">{% trans "Day Joined" %}:</span>
+                <span class="info">{{ post.user.date_joined | date:"d/m/y" }}</span>
+            </div>
+            <div class="postedNumber">
+                <span class="label">{% trans "Posted Number" %}:</span>
+                <span class="info">0</span>
+            </div>
+            <div class="likeCount">
+                <span class="label">{% trans "Like Number" %}:</span>
+                <span class="info">0</span>
             </div>
         </div>
+
+        <div class="post-controls">
+            {% if user.is_moderator or post|pybb_posted_by:user %}
+                <a href="{% url 'pybb:edit_post' pk=post.id %}">{% trans "Edit" %}</a>
+            {% endif %}
+            {% if user.is_moderator %}
+                <a onclick="pybb_delete_post('{% url 'pybb:delete_post' post.id %}',
+                        'post-{{ post.id }}', '{% trans 'Delete post?' %}'); return false;"
+                   href="{% url 'pybb:delete_post' post.id %}">{% trans "Delete" %}</a>
+                {% if post.on_moderation %}
+                    <a href="{% url 'pybb:moderate_post' pk=post.id %}">{% trans "Approve post" %}</a>
+                {% endif %}
+            {% endif %}
+
+            {% if perms.pybb.change_post and user.is_staff %}
+                <a href="{% url 'admin:pybb_post_change' post.id %}">{% trans 'Admin' %}</a>
+            {% endif %}
+
+        </div>
+    </div>
     <div class="postContentContainer">
         {{ post.body_html|safe }}
 
@@ -62,5 +81,16 @@
         {% if post.updated %}
             <div class="updated-message">{% trans "Edited" %} {% pybb_time post.updated %}</div>
         {% endif %}
+            <div class="post-related">
+                {% if user|pybb_may_create_post:post.topic %}
+                    <a href="{% url 'pybb:add_post' topic.id %}?quote_id={{ post.id }}" class="quote-link">{% trans "Reply" %}</a>
+                    <a class="postId" href="{{ post.get_absolute_url }}">#{{ post.id }}</a>
+                {% endif %}
+                <div class='attachments'>
+                    {% for attachment in post.attachments.all %}
+                        <a href="{{ attachment.file.url }}"><img src="{{ STATIC_URL }}pybb/img/attachment.png"> {{ attachment.size_display }}</a>
+                    {% endfor %}
+                </div>
+            </div>
     </div>
 </div>
