@@ -272,6 +272,7 @@ INSTALLED_APPS = (
     'pinax_theme_bootstrap',
     'bootstrapform',
     'captcha',
+    'suit_ckeditor',
 )
 
 # List of processors used by RequestContext to populate the context.

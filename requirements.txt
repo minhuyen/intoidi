@@ -47,3 +47,4 @@ Whoosh==2.6.0
 xhtml2pdf==0.0.6
 xlrd==0.9.3
 xlwt==0.7.5
+django-suit-ckeditor==0.0.2
