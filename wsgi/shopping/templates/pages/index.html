@@ -114,12 +114,12 @@
                 {% if deals %}
                     {% for product in deals %}
                         <div class="slider-items">
-                            <a href="{% url 'shopping:detail' product.id %}">
+                            <a href="{{ product.get_absolute_url }}">
                                 <img u="image" src="{{ MEDIA_URL }}{{ product.image }}"  />
                                 <span class="sale">Save {{ product.show_discount_percent }}%</span>
                             </a>
                             <div class="product-info">
-                                <a href="{% url 'shopping:detail' product.id %}">
+                                <a href="{{ product.get_absolute_url }}">
                                     <p class="name-product">{{ product.title }}</p>
                                 </a>
                                 <p>Đăng bởi: </p> <span class="user-post">{{ product.user }}</span>
