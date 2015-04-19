@@ -52,6 +52,18 @@ EXTRA_MODEL_FIELDS = (
         (AUTH_USER_MODEL,),
         {"blank": True, "null": True},
     ),
+    (
+        "cartridge.shop.models.Product.manufacturer",
+        "CharField",
+        ("Manufacturer",),
+        {"blank": True, "null": True, "max_length": 100},
+    ),
+    (
+        "cartridge.shop.models.Product.review_point",
+        "IntegerField",
+        ("Review Point",),
+        {"blank": False, "null": False, "default": 0},
+    ),
 )
 
 PYBB_AVATAR_WIDTH = 120

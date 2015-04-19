@@ -19,6 +19,8 @@ class MyForumAdmin(ForumAdmin):
 
 product_fieldsets = deepcopy(ProductAdmin.fieldsets)
 product_fieldsets[0][1]["fields"].insert(2, "user")
+product_fieldsets[0][1]["fields"].insert(3, "manufacturer")
+product_fieldsets[0][1]["fields"].insert(4, "review_point")
 
 
 class MyProductAdmin(ProductAdmin):
