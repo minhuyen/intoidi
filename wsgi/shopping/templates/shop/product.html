@@ -52,107 +52,481 @@ $(document).ready(function() {
 
 {% block all_content %}
 
-{% if images %}
-{% spaceless %}
-<ul id="product-images-large" class="list-unstyled list-inline">
-    {% for image in images %}
-    <li id="image-{{ image.id }}-large"{% if not forloop.first %}style="display:none;"{% endif %}>
-        <a class="product-image-large" href="{{ MEDIA_URL }}{{ image.file }}">
-            <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 0 300 %}" class="img-thumbnail img-responsive col-xs-12">
-        </a>
-    </li>
-    {% endfor %}
-</ul>
+{#{% if images %}#}
+{#{% spaceless %}#}
+{#<ul id="product-images-large" class="list-unstyled list-inline">#}
+{#    {% for image in images %}#}
+{#    <li id="image-{{ image.id }}-large"{% if not forloop.first %}style="display:none;"{% endif %}>#}
+{#        <a class="product-image-large" href="{{ MEDIA_URL }}{{ image.file }}">#}
+{#            <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 0 300 %}" class="img-thumbnail img-responsive col-xs-12">#}
+{#        </a>#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{##}
+{#{% if images|length != 1 %}#}
+{#<ul id="product-images-thumb" class="list-unstyled list-inline">#}
+{#    {% for image in images %}#}
+{#    <li>#}
+{#        <a class="thumbnail" id="image-{{ image.id }}" href="{{ MEDIA_URL }}{{ image.file }}">#}
+{#            <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 75 75 %}">#}
+{#        </a>#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{#{% endif %}#}
+{##}
+{#{% endspaceless %}#}
+{#{% endif %}#}
+{##}
+{#{% editable product.content %}#}
+{#{{ product.content|richtext_filters|safe }}#}
+{#{% endeditable %}#}
+{##}
+{#{% if product.available and has_available_variations %}#}
+{#<ul id="variations" class="list-unstyled">#}
+{#    {% for variation in variations %}#}
+{#    <li id="variation-{{ variation.sku }}"#}
+{#        {% if not variation.default %}style="display:none;"{% endif %}>#}
+{#        {% if variation.has_price %}#}
+{#            {% if variation.on_sale %}#}
+{#                <span class="old-price">{{ variation.unit_price|currency }}</span>#}
+{#                {% trans "On sale:" %}#}
+{#            {% endif %}#}
+{#            <span class="price">{{ variation.price|currency }}</span>#}
+{#        {% else %}#}
+{#            {% if has_available_variations %}#}
+{#            <span class="error-msg">#}
+{#            {% trans "The selected options are currently unavailable." %}#}
+{#            </span>#}
+{#            {% endif %}#}
+{#        {% endif %}#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#</ul>#}
+{##}
+{#{% errors_for add_product_form %}#}
+{##}
+{#<form method="post" id="add-cart" class="shop-form">#}
+{#    {% fields_for add_product_form %}#}
+{#    <div class="form-actions">#}
+{#        <input type="submit" class="btn btn-primary btn-lg pull-right" name="add_cart" value="{% trans "Buy" %}">#}
+{#        {% if settings.SHOP_USE_WISHLIST %}#}
+{#        <input type="submit" class="btn btn-default btn-lg pull-left" name="add_wishlist" value="{% trans "Save for later" %}">#}
+{#        {% endif %}#}
+{#    </div>#}
+{#</form>#}
+{#{% else %}#}
+{#<p class="error-msg">{% trans "This product is currently unavailable." %}</p>#}
+{#{% endif %}#}
+{##}
+{#{% if settings.SHOP_USE_RATINGS %}#}
+{#<div class="panel panel-default rating">#}
+{#    <div class="panel-body">{% rating_for product %}</div>#}
+{#</div>#}
+{#{% endif %}#}
+{##}
+{#{% if settings.SHOP_USE_RELATED_PRODUCTS and related_products %}#}
+{#<h2>{% trans "Related Products" %}</h2>#}
+{#<div class="row related-products">#}
+{#    {% for product in related_products %}#}
+{#    <div class="col-xs-6 col-sm-4 col-md-3 product-thumb">#}
+{#        <a class="thumbnail" href="{{ product.get_absolute_url }}">#}
+{#            {% if product.image %}#}
+{#            <img src="{{ MEDIA_URL }}{% thumbnail product.image 90 90 %}">#}
+{#            {% endif %}#}
+{#            <div class="caption">#}
+{#            <h6>{{ product }}</h6>#}
+{#            <div class="price-info">#}
+{#            {% if product.has_price %}#}
+{#                {% if product.on_sale %}#}
+{#                <span class="old-price">{{ product.unit_price|currency }}</span>#}
+{#                {% trans "On sale:" %}#}
+{#                {% endif %}#}
+{#                <span class="price">{{ product.price|currency }}</span>#}
+{#            {% else %}#}
+{#                <span class="coming-soon">{% trans "Coming soon" %}</span>#}
+{#            {% endif %}#}
+{#            </div>#}
+{#            </div>#}
+{#        </a>#}
+{#    </div>#}
+{#    {% endfor %}#}
+{#</div>#}
+{#{% endif %}#}
 
-{% if images|length != 1 %}
-<ul id="product-images-thumb" class="list-unstyled list-inline">
-    {% for image in images %}
-    <li>
-        <a class="thumbnail" id="image-{{ image.id }}" href="{{ MEDIA_URL }}{{ image.file }}">
-            <img alt="{{ image.description }}" src="{{ MEDIA_URL }}{% thumbnail image.file 75 75 %}">
-        </a>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+<script type="text/javascript" src="{% static "js/jquery-1.10.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.elevatezoom.js"  %}"></script>
+    <script type="text/javascript" src="{% static "js/jssor.js"  %}"></script>
+    <script type="text/javascript" src="{% static "js/jssor.slider.min.js"  %}"></script>
+    <script type="text/javascript" src="{% static "js/resize.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.plugin.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.countdown.min.js" %}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            var options = {
+                $AutoPlay: true,
+                $SlideWidth: 261, //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                $SlideHeight: 235,
 
-{% endspaceless %}
-{% endif %}
+                $BulletNavigatorOptions: {
+                    $Class: $JssorBulletNavigator$,
+                    $ChanceToShow: 2,
+                    $SpacingX: 8                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                }
+            };
+            var optionsTab = {
+                    $AutoPlay: false,                                    //[Optional] Whether to auto play, to enable slideshow, eater than 1, or parking position is not 0)
+                    $DragOrientation: 0,
+                    $ThumbnailNavigatorOptions: {
+                        $Class: $JssorThumbnailNavigator$,              //[Required] Class to create thumbnail navigator instance
+                        $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
 
-{% editable product.content %}
-{{ product.content|richtext_filters|safe }}
-{% endeditable %}
+                        $ActionMode: 1,                                 //[Optional] 0 None, 1 act by click, 2 act by mouse hover, 3 both, default value is 1
+                        $AutoCenter: 3,                             //[Optional] Auto center thumbnail items in the thumbnail navigator container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 3
+                        $Lanes: 1,                                      //[Optional] Specify lanes to arrange thumbnails, default value is 1
+                        $SpacingX: 0,                                   //[Optional] Horizontal space between each thumbnail in pixel, default value is 0
+                        $SpacingY: 0,                                   //[Optional] Vertical space between each thumbnail in pixel, default value is 0
+                        $DisplayPieces: 5,                              //[Optional] Number of pieces to display, default value is 1
+                        $ParkingPosition: 0,                            //[Optional] The offset position to park thumbnail
+                        $Orientation: 1,                                //[Optional] Orientation to arrange thumbnails, 1 horizental, 2 vertical, default value is 1
+                        $DisableDrag: true                              //[Optional] Disable drag or not, default value is false
+                    }
+                };
 
-{% if product.available and has_available_variations %}
-<ul id="variations" class="list-unstyled">
-    {% for variation in variations %}
-    <li id="variation-{{ variation.sku }}"
-        {% if not variation.default %}style="display:none;"{% endif %}>
-        {% if variation.has_price %}
-            {% if variation.on_sale %}
-                <span class="old-price">{{ variation.unit_price|currency }}</span>
-                {% trans "On sale:" %}
-            {% endif %}
-            <span class="price">{{ variation.price|currency }}</span>
-        {% else %}
-            {% if has_available_variations %}
-            <span class="error-msg">
-            {% trans "The selected options are currently unavailable." %}
-            </span>
-            {% endif %}
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
+            var hot_deal = new $JssorSlider$('hotdeal', options);
+            var tabs = new $JssorSlider$("tab-design", optionsTab);
 
-{% errors_for add_product_form %}
 
-<form method="post" id="add-cart" class="shop-form">
-    {% fields_for add_product_form %}
-    <div class="form-actions">
-        <input type="submit" class="btn btn-primary btn-lg pull-right" name="add_cart" value="{% trans "Buy" %}">
-        {% if settings.SHOP_USE_WISHLIST %}
-        <input type="submit" class="btn btn-default btn-lg pull-left" name="add_wishlist" value="{% trans "Save for later" %}">
-        {% endif %}
-    </div>
-</form>
-{% else %}
-<p class="error-msg">{% trans "This product is currently unavailable." %}</p>
-{% endif %}
+            $("#product-view").elevateZoom({constrainType:"height", constrainSize:274, zoomType: "lens", containLensZoom: true, gallery:'gal1', cursor: 'pointer', galleryActiveClass: "active"});
+            //pass the images to Fancybox
+            $("#product-view").bind("click", function(e) {
+                var ez = $('#product-view').data('elevateZoom');
+                $.fancybox(ez.getGalleryList());
+                return false;
+            });
+        });
 
-{% if settings.SHOP_USE_RATINGS %}
-<div class="panel panel-default rating">
-    <div class="panel-body">{% rating_for product %}</div>
-</div>
-{% endif %}
+    </script>
 
-{% if settings.SHOP_USE_RELATED_PRODUCTS and related_products %}
-<h2>{% trans "Related Products" %}</h2>
-<div class="row related-products">
-    {% for product in related_products %}
-    <div class="col-xs-6 col-sm-4 col-md-3 product-thumb">
-        <a class="thumbnail" href="{{ product.get_absolute_url }}">
-            {% if product.image %}
-            <img src="{{ MEDIA_URL }}{% thumbnail product.image 90 90 %}">
-            {% endif %}
-            <div class="caption">
-            <h6>{{ product }}</h6>
-            <div class="price-info">
-            {% if product.has_price %}
-                {% if product.on_sale %}
-                <span class="old-price">{{ product.unit_price|currency }}</span>
-                {% trans "On sale:" %}
-                {% endif %}
-                <span class="price">{{ product.price|currency }}</span>
-            {% else %}
-                <span class="coming-soon">{% trans "Coming soon" %}</span>
-            {% endif %}
-            </div>
-            </div>
-        </a>
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
+<!-- Content -->
+  	<div class="content">
+				<div class="product-detail">
+					<div class="product-info">
+						<h2 class="title-detail">{{ product.title }}</h2><span class="post-user"> đăng bởi: {{ product.user }}</span>
+						<div class="break"><a href="/">Trang chủ</a>/<a href="#">Áo in hình</a></div>
+						<div class="product-info-detail">
+							<div class="detail">
+                                {% for image in images %}
+                                    {% if forloop.first %}
+                                        <div class="product-detail-slider">
+                                            <img id="product-view" src="{{ MEDIA_URL }}{{ image.file }}" data-zoom-image="{{ MEDIA_URL }}{{ image.file }}"/>
+                                            <div id="gal1">
+                                                <a href="#" class="active" data-image="{{ MEDIA_URL }}{{ image.file }}" data-zoom-image="{{ MEDIA_URL }}{{ image.file }}">
+                                                    <img id="img_01" src="{{ MEDIA_URL }}{{ image.file }}" />
+                                                </a>
+                                    {% else %}
+                                                <a href="#" data-image="{{ MEDIA_URL }}{{ image.file }}" data-zoom-image="{{ MEDIA_URL }}{{ image.file }}">
+                                                    <img id="img_01" src="{{ MEDIA_URL }}{{ image.file }}" />
+                                                </a>
+                                    {% endif %}
+                                    {% if forloop.last %}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+								<div class="product-detail-items">
+									<div class="price">
+{#                                    <ul id="variations" class="list-unstyled">#}
+                                    {% for variation in variations %}
+                                        {% if forloop.first %}
+{#                                            <li id="variation-{{ variation.sku }}">#}
+                                                {% if variation.has_price %}
+                                                    {% if variation.on_sale %}
+                                                        <span>{{ variation.price|currency }}</span>
+                                                        <span class="price-old">{{ variation.unit_price|currency }}</span>
+                                                    {%  endif %}
+                                                    {% else %}
+                                                         <span>{{ variation.unit_price|currency }}</span>
+                                                    {% endif %}
+{#                                            </li>#}
+{#                                        {% else %}#}
+{#                                            <li id="variation-{{ variation.sku }}" style="display:none;">#}
+{#                                                {% if variation.has_price %}#}
+{#                                                    {% if variation.on_sale %}#}
+{#                                                        <span>{{ variation.unit_price|currency }}</span>#}
+{#                                                        <span class="price-old">{{ variation.price|currency }}</span>#}
+{#                                                    {%  endif %}#}
+{#                                                    {% else %}#}
+{#                                                         <span>{{ variation.unit_price|currency }}</span>#}
+{#                                                    {% endif %}#}
+{#                                            </li>#}
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    </ul>
+									</div>
+									<div class="facts">
+										<div class="facts-items">
+											<span class="facts-title">Availabilty:</span>
+                                            {% if product.available %}
+                                                <span class="price-old">Available in stock</span>
+                                            {% else %}
+                                                <span class="price-old">Not available in stock</span>
+                                            {% endif %}
+										</div>
+										<div class="facts-items">
+											<span class="facts-title">Profuct Code:</span>
+											<span class="price-old">{{ product.sku }}</span>
+										</div>
+										<div class="facts-items">
+											<span class="facts-title">Manufacturer:</span>
+											<span class="price-old">{{ product.manufacturer }}</span>
+										</div>
+										<div class="facts-items">
+											<span class="facts-title">Review points:</span>
+											<span class="price-old">{{ product.review_point }}</span>
+										</div>
+									</div>
+									<div class="code-shit">
+										Mã thiết kế: <span>{{ product.sku }}</span> <a href="#" class="edit-shit">(chỉnh sửa thiết kế)</a>
+									</div>
+									<div class="list-color">
+                                        {% if product_option_list %}
+                                            {% for productOption in product_option_list %}
+                                                {% if productOption.option2 %}
+                                                    <a href="#" style="background: {{ productOption.option2 }}"></a>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+									</div>
+									<div class="quantity">
+										<span class="qua-title">Quantity:</span>
+										<div class="quatity-val">
+											<input type="text" value="1">
+											<a href="#" class="arrow-up"></a>
+											<a href="#" class="arrow-dow"></a>
+										</div>
+									</div>
+									<div class="size">
+										<span class="qua-title">Size:</span>
+										<select>
+											{% if product_option_list %}
+                                            {% for productOption in product_option_list %}
+                                                {% if productOption.option1 %}
+                                                    <option>{{ productOption.option1 }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+										</select>
+										<a href="#" class="guide">(Hướng dẫn chọn)</a>
+									</div>
+									<a href="#" class="btn-addcart">Add to cart</a>
+									<div class="favorite">
+										<span class="like">{{ product.like }} người thích</span>
+                                        <input type="hidden" value="{{ product.sale_to|date:"Y" }}" id="product-sale-to-year">
+                                        <input type="hidden" value="{{ product.sale_to|date:"n" }}" id="product-sale-to-month">
+                                        <input type="hidden" value="{{ product.sale_to|date:"d" }}" id="product-sale-to-day">
+										<p>Đã mua: <span>612</span> | Còn bán <span id="defaultCountdown"></span></p>
+										<p>Quý khách có thể đến mua TRỰC TIẾP tại cửa hàng ở Đà Nẵng</p>
+										<p class="office">VP Đà Nẵng  <span>(có hàng)</span></p>
+									</div>
+								</div>
+								<div class="comment-face">
+									<h4>ĐỂ LẠI BÌNH LUẬN</h4>
+									<div class="com">
+										<img src="{% static "images/comment.png" %}" />
+									</div>
+								</div>
+							</div>
+							<div class="product-info-viewed">
+							<h4>SẢN PHẨM ĐÃ XEM</h4>
+							<div class="list-viewed">
+                                {% if viewed_product_list %}
+                                    {% for product in viewed_product_list %}
+                                    <div class="list-viewed-items">
+									    <a href="#"><img src="{{ MEDIA_URL }}{{ product.image }}" /></a>
+									    <p>{{ product.title }}</p>
+									    <p>Đăng bởi : <span>{{ product.user }}</span></p>
+									    <p>Giá: <span class="price">{{ product.sale_price }}</span></p>
+								    </div>
+                                    {% endfor %}
+                                {% endif %}
+							</div>
+							<div class="hot-deal" id="hotdeal" style="position: relative; top: 0px; left: 0px; width: 261px; height: 235px;">
+								<span class="hot-tit">HOT DEAL</span>
+								<div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 261px; height: 235px;">
+							        <div><img u="image" src="{% static "images/hotdeal.png" %}" /></div>
+							        <div><img u="image" src="{% static "images/hotdeal.png" %}" /></div>
+							        <div><img u="image" src="{% static "images/hotdeal.png" %}" /></div>
+							    </div>
+						     	<div u="navigator" class="jssorb21" style="position: absolute; bottom: 10px; right: 10px;">
+					            <!-- bullet navigator item prototype -->
+					            <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px; text-align:center; line-height:12px; color:White; font-size:12px;"></div>
+					        </div>
+							</div>
+						</div>
+						</div>
+					</div>
+					<!-- /. Product Info -->
+
+					<div class="product-designer" >
+
+						<div id="tab-design" style="position: relative; top: 0px; left: 0px; width: 1000px; height: 231px; background: #fff; overflow: hidden; ">
+
+					        <!-- Slides Container -->
+					        <div u="slides" class="tab-content" style=" position: absolute; left: 0px; top: 29px; width: 1000px; height: 200px; overflow: hidden;">
+					            <div>
+					                <div style="margin: 10px; overflow: hidden; color: #000;">Slide 1 content, place any html here.</div>
+					                <div u="thumb">Designer</div>
+					            </div>
+					            <div>
+					                <div style="margin: 10px; overflow: hidden; color: #000;">Slide 2 content, place any html here.</div>
+					                <div u="thumb">Thông tin thiết kế</div>
+					            </div>
+
+					        </div>
+					        <div u="thumbnavigator" class="jssort12" style="position: absolute; width: 200px; height: 30px; left:0px; top: 0px;">
+					            <div u="slides" class="tabs-items" style="cursor: move; top:0px; left:0px;">
+					                <div u="prototype" class="p" style="POSITION: absolute; WIDTH: 100px; HEIGHT: 30px; TOP: 0; LEFT: 0; padding:0px;">
+					                    <div class=w><div u="thumbnailtemplate" class="c" style=" WIDTH: 100%; HEIGHT: 100%; position:absolute; TOP: 0; LEFT: 0; line-height:28px; text-align:center;"></div></div>
+					                </div>
+					            </div>
+					            <!-- Thumbnail Item Skin End -->
+					        </div>
+					    </div>
+
+					</div>
+					<!-- /. Product Designer -->
+
+					<div class="product-connection">
+						<div class="slider">
+							<h4>CÓ THỂ BẠN THÍCH </h4>
+							<div class="product-carousel" id="product-carousel">
+							    <!-- Wrapper for slides -->
+							    <div u="slides" class="slider-content">
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img5.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img2.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img1.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img2.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img4.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img3.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img5.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img4.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img3.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img2.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						           	<div class="slider-items">
+						           		<a href="#"><img u="image" src="{% static "images/img1.png" %}" /></a>
+						           		<span class="sale">Save 20%</span>
+						           		<div class="product-info">
+						           			<p class="name-product">Tên sản phẩm</p>
+							           		<p>Đăng bởi: </p> <span class="user-post"> member</span>
+							           		<p>Giá: </p> <span class="price">199,000₫</span> <span class="price-old">250,000₫</span>
+						           		</div>
+						           	</div>
+						        	<!-- Arrow Left -->
+							        <span u="arrowleft" class="jssora03l" style="width: 34px;height: 34px;top: 95px; left: 2px;"><</span>
+							        <!-- Arrow Right -->
+							        <span u="arrowright" class="jssora03r" style="width: 34px;height: 34px;top: 95px; right: 2px">></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /. Product Designer -->
+				</div>
+			</div>
+	<!-- /. Content -->
+
+    <!-- Countdown -->
+    <script>
+        $(function () {
+            var productSaleToYear = $('#product-sale-to-year').val();
+            var productSaleToMonth = $('#product-sale-to-month').val();
+            var productSaleToDay= $('#product-sale-to-day').val();
+            productSaleTo = new Date(productSaleToYear, productSaleToMonth - 1 , productSaleToDay);
+            $('#defaultCountdown').countdown({until: productSaleTo, compact: true, description: ''});
+            $('#year').text(austDay.getFullYear());
+        });
+    </script>
 
 {% endblock %}
