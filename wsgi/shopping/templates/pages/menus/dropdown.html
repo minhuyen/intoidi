@@ -27,7 +27,8 @@
                     {% endif %}
                 {% endfor %}
                 <li>
-                    <a href="{% url "account_login" %}">{% trans "Log in" %}</a>
+{#                    <a href="{% url "account_login" %}">{% trans "Log in" %}</a>#}
+                    <a id="login" href="javascript:void(0)">{% trans "Log in" %}</a>
                 </li>
             </ul>
 
@@ -48,3 +49,9 @@
 
     {% endif %}
 {% endspaceless %}
+
+<script type="text/javascript">
+    $('#login').click(function(){
+        $('.modal').modal('show');
+    })
+</script>
