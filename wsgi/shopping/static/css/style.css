@@ -658,7 +658,8 @@ header, section, footer, aside, nav, article, figure {
 	display: inline-block;	
 	color: #472900;
 }
-.form-login-col input[type="text"] {
+.form-login-col input[type="text"],
+.form-login-col input[type="password"] {
 	border: solid 1px #ccc;
 	padding: 3px 5px;
 	height: 26px;
@@ -680,6 +681,7 @@ header, section, footer, aside, nav, article, figure {
 	color: #fff;
 	display: inline-block;
 	font-family: hel-bold;
+    border: none;
 }
 .login-submit .btn-signup {
 	border-radius: 5px;
@@ -692,7 +694,8 @@ header, section, footer, aside, nav, article, figure {
 	display: inline-block;
 	font-family: hel-bold;
 }
-.form-login-detail .forgot-pass {
+.form-login-detail .forgot-pass,
+.forgot-pass {
 	color: #0e71b4;
 	position: relative;
 	left: 60px;
@@ -922,4 +925,39 @@ header, section, footer, aside, nav, article, figure {
 	top: 3px;
 	margin-left: -6px;
 	left: 3px;
+}
+
+.ui-dialog {
+    width: 637px;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.signup-submit {
+	/*border-top: solid 1px #d5d0cd;*/
+	font-size: 16px;
+	float: left;
+	text-align: center;
+	width: 100%;
+	clear: both;
+	padding: 17px 0;
+	/*background: #fefbc4;*/
+	border-radius: 0 0 5px 5px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+}
+
+.signup-submit .btn-signup {
+    font-size: 14px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	background: #f7941d;
+	padding: 10px 45px;
+	margin-top: 10px;
+	color: #fff;
+	display: inline-block;
+	font-family: hel-bold;
 }

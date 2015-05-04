@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
-{% load pages_tags mezzanine_tags i18n future staticfiles bootstrap %}
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -92,51 +92,124 @@
     </div> 
 </div>
 {% include "includes/footer_scripts.html" %}
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+{#          <div class="modal-body">#}
+{#            <form id="login_form" method="POST" action="{% url "account_login" %}">#}
+{#                    <legend>{% trans "Log in to an existing account" %}</legend>#}
+{#                    {% csrf_token %}#}
+{#                <div class="form-group">#}
+{#                    <label for="id_username" class="control-label  ">Username</label>#}
+{#                    {% for error in field.errors %}#}
+{#                        <span class="help-block {{ form.error_css_class }}">{{ error }}</span>#}
+{#                    {% endfor %}#}
+{#                    <div class=" ">#}
+{#                        <input type="text" name="username" maxlength="30" id="id_username" class=" form-control">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group">#}
+{#                    <label for="id_password" class="control-label  ">Password</label>#}
+{#                    {% for error in field.errors %}#}
+{#                        <span class="help-block {{ form.error_css_class }}">{{ error }}</span>#}
+{#                    {% endfor %}#}
+{#                    <div class=" ">#}
+{#                        <input type="password" name="password" id="id_password" class=" form-control">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <input type="hidden" value="{{ request.get_full_path }}" id="redirectURL" />#}
+{#                <button id="loginButton" type="submit" class="btn btn-primary">{% trans "Log in" %}</button>#}
+{#                <a id="loginButton" class="btn btn-primary" href="javascript:void(0)">{% trans "Log in" %}</a>#}
+{#                <a href="{% url "account_password_reset" %}" class="btn btn-link">{% trans "Forgot your password?" %}</a>#}
+{#            </form>#}
+              <form class="form-login form-info-error ui-dialog" id="login_form" method="POST" action="{% url "account_login" %}">
+                  <h3>Login</h3>
+                  <span id="errorMessage" class="error-msg"></span>
+                  {% csrf_token %}
+                    <div class="form-login-detail">
+                        <div class="form-login-col">
+                            <span>Username: </span><input name="username" id="id_username" type="text" class="email-login"/>
+                        </div>
+                        <div class="form-login-col">
+                            <span>Password: </span><input name="password" id="id_password" type="password" class="email-login">
+                        </div>
+                        <input type="checkbox" class="remember-password"> Nhớ mật khẩu <br>
+                        <input type="hidden" value="{{ request.get_full_path }}" name="redirectURL" id="redirectURL" />
+                        <button type="submit" class="btn-login" href="#">Login</button>
+                        <a class="forgot-pass" href="{% url "account_password_reset" %}">Forgot password ?</a>
+                    </div>
+	                <div class="login-submit">
+	                	<span>Don't have an account ?</span><br>
+	                	<a class="btn-signup" href="#">Signup</a>
+	                </div>
+            </form>
+{#        </div>#}
+      </div>
+    </div>
+
+{#    <script type="text/javascript">#}
+{#        $(document).ready(function(){#}
+{#           $('#login_form').submit(function(e){#}
+{#                e.preventDefault();#}
+{#                var request_url = $(document).getElementById('request_url').value;#}
+{#                $.ajax({#}
+{#                    type:"POST",#}
+{#                    url: '{% url "account_login" %}',#}
+{#                    data: $('#login_form').serialize(),#}
+{#            // the success function is called in the case of an http 200 response#}
+{#                    success: function(data){#}
+{#                        console.log((data));#}
+{#                        if(JSON.stringify(data.success) == 'true') {#}
+{#                            $('.modal').modal('hide');#}
+{#                        }#}
+{#                        else {#}
+{#                            $('#errorMessage').html(data);#}
+{#                        }#}
+{#                        window.location = response;#}
+{#                     },#}
+{#                    error: function(data){#}
+{#                    }#}
+{#                });#}
+{#            })#}
+{#        });#}
+{#    </script>#}
+</div>
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+              <form class="form-login form-info-error ui-dialog" id="login_form" method="POST" action="{% url "account_login" %}">
+                  <h3>Sign Up</h3>
+                  <span id="errorMessage" class="error-msg"></span>
+                  {% csrf_token %}
+                    <div class="form-login-detail form-signup-detail">
+                        <h5 class="title-signup">{% trans "Please input your information" %}</h5>
+                        <div class="form-login-col">
+	                		<span>Fullname: </span><input type="text" class="email-login">
+	                	</div>
+	                	<div class="form-login-col">
+	                		<span>Telephone: </span><input type="text" class="email-login">
+	                	</div>
+	                	<div class="form-login-col">
+	                		<span>Email:</span><input type="text" class="email-login">
+	                	</div>
+	                	<div class="form-login-col">
+	                		<span>Password:</span><input type="password" class="email-login">
+	                	</div>
+	                	<div class="form-login-col">
+	                		<span>Retype Password:</span><input type="password" class="email-login">
+	                	</div>
+	                	<span class="signup-apply">Bằng việc bấm đăng ký bạn đã chấp nhận các <a href="#">điều khoản</a> và <a href="#">quy định</a> của intoidi.com</span>
+	                	<a class="btn-signin" href="#">Đăng ký</a>
+                        <div class="signup-forgot">
+	                		<span>Đã có tài khoản?</span> <a href="#">Đăng nhập</a><br>
+	                		<span>Quên mật khẩu?</span> <a href="#">Lấy lại mật khẩu</a>
+                    </div>
+                    </div>
+            </form>
+{#        </div>#}
+      </div>
+    </div>
+</div>
 
 </body>
 </html>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Login</h4>
-      </div>
-      <div class="modal-body">
-        <form method="POST" action="{% url "account_login" %}" autocapitalize="off" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
-                <legend>{% trans "Log in to an existing account" %}</legend>
-                {% csrf_token %}
-{#                {{ form.field|bootstrap }}#}
-                {% if redirect_field_value %}
-                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button type="submit" class="btn btn-primary">{% trans "Log in" %}</button>
-                <a href="{% url "account_password_reset" %}" class="btn btn-link">{% trans "Forgot your password?" %}</a>
-            </form>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
-
-{#<script type="javascript">#}
-{#    $('#loginButton').click(function(e){#}
-{#        e.preventDefault();#}
-{#        var request_url = document.getElementById('next').value;#}
-{#        $.ajax({#}
-{#            type:"POST",#}
-{#            url: '/login',#}
-{#            data: $('#login_form').serialize(),#}
-{#    // the success function is called in the case of an http 200 response#}
-{#            success: function(response){#}
-{#                window.location = response;#}
-{#             },#}
-{#            error: function(xhr, ajaxOptions, thrownError){#}
-{#                alert('login failed - please try again');#}
-{#            }#}
-{#        });#}
-{#    })#}
-{#</script>#}
